@@ -124,6 +124,8 @@ figure.viz figcaption b { color: var(--ink); }
 .controls input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .out { font-size: 13.5px; background: var(--bg); padding: 10px 12px; margin-top: 10px; font-variant-numeric: tabular-nums; }
 .out b { font-weight: 600; }
+td input[type=number] { width: 96px; font: inherit; font-variant-numeric: tabular-nums; color: var(--ink); background: var(--bg); border: 1px solid var(--rule); padding: 3px 6px; border-radius: 3px; text-align: right; }
+td input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 details.data { margin-top: 8px; font-size: 13px; }
 details.data summary { cursor: pointer; color: var(--accent); }
 details.data table { min-width: 0; font-size: 13px; }
@@ -213,7 +215,24 @@ M₃ = M무 · V무ᵀ    목표연도 무역규모</pre>
       <tr><td>T</td><td>전략기간(년)</td></tr>
     </tbody>
   </table></div>
-  <p><strong>V 읽는 법.</strong> 원본은 "장성속도"라고만 썼지만, T제곱을 하므로 <strong>V = 1 + 성장률</strong>을 넣어야 합니다. 5% 성장이면 1.05입니다. 북한 통계는 성장속도를 흔히 105%처럼 지수로 씁니다. 결국 세 항목에 복리 성장식 <code>미래값 = 현재값 × (1+g)ᵀ</code>를 각각 적용해 더한 것입니다.</p>
+  <div class="note">
+    <p><strong>V 읽는 법: 쉽게 풀어보기</strong></p>
+    <p><strong>V는 "1년에 몇 배가 되는가"입니다.</strong> 원본은 "연평균 장성속도"라고만 썼지만, 5% 늘면 1.05배, 즉 V = 1.05입니다. 5를 넣는 것이 아닙니다. 5를 넣으면 매년 5배가 된다는 뜻이 됩니다. 북한 통계가 성장을 "전년의 105%"처럼 쓰는 것도 같은 이야기입니다. 105%를 소수로 쓰면 1.05입니다.</p>
+    <p><strong>T는 "그 일을 몇 년 반복하는가"입니다.</strong> T = 5이면 5를 곱하는 것이 아니라 V를 5번 곱합니다. 이것을 줄여 쓴 것이 V<sup>T</sup>입니다. 매년 늘어난 값에 다시 5%가 붙기 때문에, 해마다 곱하는 일이 쌓입니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>연도</th><th>계산 (1,000만t이 매년 5% 늘 때)</th><th class="n">결과 (만t)</th></tr></thead>
+      <tbody>
+        <tr><td>기준</td><td>처음 값</td><td class="n">1,000</td></tr>
+        <tr><td>1년 뒤</td><td>1,000 × 1.05</td><td class="n">1,050</td></tr>
+        <tr><td>2년 뒤</td><td>1,050 × 1.05</td><td class="n">1,102.5</td></tr>
+        <tr><td>3년 뒤</td><td>1,102.5 × 1.05</td><td class="n">약 1,158</td></tr>
+        <tr><td>5년 뒤</td><td>1,000 × 1.05 × 1.05 × 1.05 × 1.05 × 1.05 = 1,000 × 1.05<sup>5</sup></td><td class="n">약 1,276</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>왜 더하지 않고 곱할까요?</strong> 5%는 "작년 값의 5%"입니다. 1년차에는 1,000의 5%인 50이 늘고, 2년차에는 1,050의 5%인 52.5가 늘어 기준이 매년 커집니다. 그래서 5년간 늘어난 양은 50 × 5 = 250이 아니라 약 276입니다. 이처럼 늘어난 값에 또 늘어나는 방식을 <strong>복리</strong>라고 합니다.</p>
+    <p><strong>연평균 장성속도는 이렇게 구한 값입니다.</strong> 5년 동안 1,000이 1,276이 되었다면, 매년 곱해서 5번 만에 1.276배가 되는 수는 약 1.05입니다. 이 1.05가 "연평균 장성속도"입니다. 다시 5번 곱하면 원래의 1.276이 나옵니다.</p>
+    <p><strong>한 줄 요약:</strong> V = 1 + 성장률, 목표연도 값 = 기준 값 × V를 T번 곱한 것. 세 항목(생산물·원료와 자재·무역)에 각자의 V를 적용해 더한 것이 M입니다.</p>
+  </div>
 
   <figure class="viz" id="ch-growth">
     <div class="viz-head">
@@ -242,19 +261,42 @@ W_t  =  Σ   Σ   M_ij · C_ij
        i=1 j=1</pre><span class="num">(11−2)</span></div>
     <p class="cap">원본 183쪽. W<sub>t</sub>는 전략기간 마지막 해의 유통액(원), M<sub>ij</sub>는 i번째 부류 j번째 제품의 현물량(t), C<sub>ij</sub>는 그 제품의 톤당 가격(원/t)입니다.</p>
   </div>
-  <p>품목마다 단위가 달라 그냥 더할 수 없습니다. 그래서 모두 <strong>물량 × 톤당 가격</strong>으로 바꾼 뒤 합산합니다. 아래는 예시 값입니다.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>부류 i / 제품 j</th><th class="n">M<sub>ij</sub> (만t)</th><th class="n">C<sub>ij</sub> (원/t)</th><th class="n">M<sub>ij</sub>·C<sub>ij</sub> (억원)</th></tr></thead>
-    <tbody>
-      <tr><td>연료 / 석탄</td><td class="n">1,200</td><td class="n">25,000</td><td class="n">3,000</td></tr>
-      <tr><td>금속 / 강재</td><td class="n">300</td><td class="n">400,000</td><td class="n">12,000</td></tr>
-      <tr><td>화학 / 비료</td><td class="n">150</td><td class="n">300,000</td><td class="n">4,500</td></tr>
-      <tr><th>W<sub>t</sub></th><td></td><td></td><td class="n"><strong>19,500</strong></td></tr>
-    </tbody>
-  </table></div>
+  <div class="note">
+    <p><strong>Σ(시그마)와 위아래 숫자 읽는 법</strong></p>
+    <p><strong>Σ는 수열의 합입니다.</strong> Σ 아래의 i=1은 "i를 1부터 시작해서", 위의 m은 "m까지 하나씩 올려가며"라는 뜻입니다. 즉 Σ<sub>i=1</sub><sup>m</sup>는 i = 1, 2, 3, …, m일 때의 값을 모두 더하라는 말입니다.</p>
+    <p><strong>m은 부류의 수, n은 부류 안의 제품 수입니다.</strong> i는 부류(연료, 금속, 화학…)의 번호이고, j는 그 부류 안의 제품(석탄, 강재, 비료…)의 번호입니다. 연료·금속·화학 3개 부류라면 m = 3이고, 각 부류에 제품이 2개씩 있으면 n = 2입니다. 부류마다 제품 수가 다르면 n도 부류마다 달라집니다.</p>
+    <p><strong>Σ가 두 개면 표의 모든 칸을 더한다는 뜻입니다.</strong> 안쪽 Σ<sub>j</sub>는 한 부류 안의 제품을 더하고, 바깥쪽 Σ<sub>i</sub>는 그 결과를 부류별로 더합니다. 예를 들어 m = 3, n = 2이면 항이 3 × 2 = 6개입니다.</p>
+    <p style="font-family:var(--f-mono);font-size:13.5px;overflow-x:auto;white-space:nowrap">W<sub>t</sub> = M₁₁C₁₁ + M₁₂C₁₂ + M₂₁C₂₁ + M₂₂C₂₂ + M₃₁C₃₁ + M₃₂C₃₂</p>
+    <p>각 항은 "물량 × 톤당 가격"이므로, 제품마다 따로 계산한 금액을 전부 합친 것이 유통액 W<sub>t</sub>입니다.</p>
+  </div>
+  <p>품목마다 단위(톤, 개수 등)가 달라 그냥 더할 수 없습니다. 그래서 모두 <strong>물량 × 톤당 가격</strong>으로 바꾼 뒤 합산합니다. 아래 그래프에서 값을 바꿔 보세요. 숫자는 설명용 예시 값입니다.</p>
+  <figure class="viz" id="ch-wt">
+    <div class="viz-head">
+      <span class="viz-title">부류별 유통액 M<sub>ij</sub>·C<sub>ij</sub> (억원) · 예시 값</span>
+      <span class="legend"><span><i class="sw" style="background:var(--s1)"></i>각 부류의 첫째 제품 (j=1)</span><span><i class="sw" style="background:var(--s2)"></i>각 부류의 둘째 제품 (j=2)</span></span>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>부류 i / 제품 j</th><th class="n">M<sub>ij</sub> (만t)</th><th class="n">C<sub>ij</sub> (원/t)</th><th class="n">M<sub>ij</sub>·C<sub>ij</sub> (억원)</th></tr></thead>
+      <tbody>
+        <tr><td>연료 (i=1) / 석탄 (j=1)</td><td class="n"><input id="w-m0" type="number" value="1200" min="0" step="10" aria-label="석탄 물량"></td><td class="n"><input id="w-c0" type="number" value="25000" min="0" step="1000" aria-label="석탄 톤당 가격"></td><td class="n" id="w-v0"></td></tr>
+        <tr><td>연료 (i=1) / 석유 (j=2)</td><td class="n"><input id="w-m1" type="number" value="200" min="0" step="10" aria-label="석유 물량"></td><td class="n"><input id="w-c1" type="number" value="60000" min="0" step="1000" aria-label="석유 톤당 가격"></td><td class="n" id="w-v1"></td></tr>
+        <tr><td>금속 (i=2) / 강재 (j=1)</td><td class="n"><input id="w-m2" type="number" value="300" min="0" step="10" aria-label="강재 물량"></td><td class="n"><input id="w-c2" type="number" value="400000" min="0" step="1000" aria-label="강재 톤당 가격"></td><td class="n" id="w-v2"></td></tr>
+        <tr><td>금속 (i=2) / 비철금속 (j=2)</td><td class="n"><input id="w-m3" type="number" value="20" min="0" step="10" aria-label="비철금속 물량"></td><td class="n"><input id="w-c3" type="number" value="1000000" min="0" step="1000" aria-label="비철금속 톤당 가격"></td><td class="n" id="w-v3"></td></tr>
+        <tr><td>화학 (i=3) / 비료 (j=1)</td><td class="n"><input id="w-m4" type="number" value="150" min="0" step="10" aria-label="비료 물량"></td><td class="n"><input id="w-c4" type="number" value="300000" min="0" step="1000" aria-label="비료 톤당 가격"></td><td class="n" id="w-v4"></td></tr>
+        <tr><td>화학 (i=3) / 가성소다 (j=2)</td><td class="n"><input id="w-m5" type="number" value="40" min="0" step="10" aria-label="가성소다 물량"></td><td class="n"><input id="w-c5" type="number" value="250000" min="0" step="1000" aria-label="가성소다 톤당 가격"></td><td class="n" id="w-v5"></td></tr>
+        <tr><th>W<sub>t</sub> (6개 항의 합)</th><td></td><td></td><td class="n" id="w-tot"></td></tr>
+      </tbody>
+    </table></div>
+    <div class="controls">
+      <label for="w-w0">W₀ 기초 유통액 (억원)<input id="w-w0" type="number" value="18000" min="1" step="500"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <div class="out" id="w-out"></div>
+    <figcaption><b>읽는 법.</b> 막대 하나가 부류 하나(i)이고, 막대 안의 색 조각이 그 부류의 제품(j)입니다. 조각 6개의 높이를 전부 더한 것이 W<sub>t</sub>입니다. 계산은 물량(만t) × 가격(원/t) ÷ 10,000으로 억원 단위를 맞춥니다. 예를 들어 석탄은 1,200 × 25,000 ÷ 10,000 = 3,000억원입니다.</figcaption>
+  </figure>
   <div class="eq">
     <div class="row"><pre>생산물류통수준 = W_t / W_0</pre><span class="badge b-der">서술을 식으로</span></div>
-    <p class="cap">"기초수준에 비한 전략기간의 생산물의 총류통액의 비률". 예시에서 W₀ = 15,000억원이면 19,500 ÷ 15,000 = 1.30, 즉 130%입니다.</p>
+    <p class="cap">"기초수준에 비한 전략기간의 생산물의 총류통액의 비률". 위 기본값에서는 W₀ = 18,000억원이므로 23,700 ÷ 18,000 ≈ 1.32, 즉 약 132%입니다.</p>
   </div>
   <ul class="tight">
     <li><strong>예비 유통량</strong>: 자연재해 복구는 과거 자료로 특정 지역 기준 물동량을 계산하고, 화재는 과거 최대 화재 복구 물동량을 목표에 더합니다.</li>
@@ -295,6 +337,59 @@ W_t  =  Σ   Σ   M_ij · C_ij
       </ul>
     </div>
   </div>
+  <h4>자재공급 흐름 도식</h4>
+  <figure class="viz" id="ch-supply">
+    <div class="viz-head">
+      <span class="viz-title">자재상사를 중심으로 한 자재·제품의 흐름</span>
+      <span class="legend"><span><i class="sw line" style="background:var(--s1)"></i>자재의 흐름</span><span><i class="sw line" style="background:var(--s2)"></i>제품의 흐름</span><span><i class="sw line" style="background:var(--s3)"></i>기업소 간 교류</span><span><i class="sw line" style="background:var(--muted)"></i>계획</span></span>
+    </div>
+    <div style="overflow-x:auto">
+    <svg viewBox="0 0 720 420" width="100%" style="min-width:640px;display:block" role="img" aria-label="국가의 자재공급계획에 따라 자재상사가 공장·기업소에 자재를 공급하고, 공장·기업소는 생산된 제품을 자재상사에 넘기며, 자재상사의 지령에 따라 수요자에게 제품이 보내지는 흐름도">
+      <defs>
+        <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" style="fill:var(--s1)"/></marker>
+        <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" style="fill:var(--s2)"/></marker>
+        <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" style="fill:var(--s3)"/></marker>
+        <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" style="fill:var(--muted)"/></marker>
+      </defs>
+      <!-- 상자 -->
+      <rect x="270" y="10" width="180" height="54" rx="4" style="fill:var(--surface);stroke:var(--ink2);stroke-width:1.2"/>
+      <text x="360" y="33" text-anchor="middle" class="val" style="font-size:14px">국가</text>
+      <text x="360" y="52" text-anchor="middle" class="lbl">자재공급계획 수립</text>
+      <rect x="270" y="140" width="180" height="64" rx="4" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.8"/>
+      <text x="360" y="167" text-anchor="middle" class="val" style="font-size:15px">자재상사</text>
+      <text x="360" y="187" text-anchor="middle" class="lbl">계약 · 공급 · 소비 통제</text>
+      <rect x="270" y="330" width="180" height="64" rx="4" style="fill:var(--surface);stroke:var(--ink2);stroke-width:1.2"/>
+      <text x="360" y="357" text-anchor="middle" class="val" style="font-size:14px">공장 · 기업소</text>
+      <text x="360" y="377" text-anchor="middle" class="lbl">자재공급단위 · 소비 통제</text>
+      <rect x="10" y="140" width="140" height="64" rx="4" style="fill:var(--surface);stroke:var(--ink2);stroke-width:1.2"/>
+      <text x="80" y="177" text-anchor="middle" class="val" style="font-size:14px">다른 기업소</text>
+      <rect x="550" y="140" width="160" height="64" rx="4" style="fill:var(--surface);stroke:var(--ink2);stroke-width:1.2"/>
+      <text x="630" y="177" text-anchor="middle" class="val" style="font-size:14px">수요자</text>
+      <rect x="10" y="330" width="140" height="64" rx="4" style="fill:var(--surface);stroke:var(--ink2);stroke-width:1.2"/>
+      <text x="80" y="357" text-anchor="middle" class="val" style="font-size:14px">생산현장</text>
+      <text x="80" y="377" text-anchor="middle" class="lbl">기대 앞</text>
+      <!-- 화살표 -->
+      <line x1="360" y1="64" x2="360" y2="138" stroke-dasharray="5 4" marker-end="url(#ah4)" style="stroke:var(--muted);stroke-width:2"/>
+      <text x="372" y="106" class="lbl">① 자재공급계획</text>
+      <line x1="330" y1="204" x2="330" y2="328" marker-end="url(#ah1)" style="stroke:var(--s1);stroke-width:2.4"/>
+      <text x="320" y="262" text-anchor="end" class="lbl">② 계약에 따라</text>
+      <text x="320" y="278" text-anchor="end" class="lbl">자재 공급</text>
+      <line x1="390" y1="330" x2="390" y2="206" marker-end="url(#ah2)" style="stroke:var(--s2);stroke-width:2.4"/>
+      <text x="400" y="262" class="lbl">④ 생산된 제품을</text>
+      <text x="400" y="278" class="lbl">자재상사에 넘김</text>
+      <line x1="270" y1="366" x2="152" y2="366" marker-end="url(#ah1)" style="stroke:var(--s1);stroke-width:2.4"/>
+      <text x="211" y="346" text-anchor="middle" class="lbl">③ 기대 앞까지</text>
+      <text x="211" y="386" text-anchor="middle" class="lbl">운반 공급</text>
+      <line x1="450" y1="172" x2="548" y2="172" marker-end="url(#ah2)" style="stroke:var(--s2);stroke-width:2.4"/>
+      <text x="499" y="152" text-anchor="middle" class="lbl">⑤ 지령에 따라</text>
+      <text x="499" y="192" text-anchor="middle" class="lbl">제품 발송</text>
+      <line x1="268" y1="172" x2="152" y2="172" marker-end="url(#ah3)" marker-start="url(#ah3)" style="stroke:var(--s3);stroke-width:2.4"/>
+      <text x="210" y="152" text-anchor="middle" class="lbl">⑥ 남는·모자라는</text>
+      <text x="210" y="192" text-anchor="middle" class="lbl">자재를 서로 교류</text>
+    </svg>
+    </div>
+    <figcaption><b>읽는 법.</b> 중심은 자재상사입니다. 국가의 자재공급계획(①)에 따라 자재상사가 공장·기업소와 계약을 맺고 자재를 공급하면(②), 공장·기업소의 자재공급단위가 그 자재를 생산현장 기대 앞까지 날라다 줍니다(③). 만들어진 제품은 자재상사에 넘기고(④), 자재상사의 지령에 따라 수요자에게 보내집니다(⑤). 자재상사와 공장·기업소는 모두 자재소비를 통제하는 기능을 맡습니다. 자재상사는 이 통제로 남거나 모자라는 자재를 파악해 다른 기업소와 교류하게 합니다(⑥). 공장·기업소 안에서는 내부협동생산을 촉진하고 원료·자재를 절약해서 합리적으로 이용하도록 보장합니다.</figcaption>
+  </figure>
   <p><strong>수요 개념.</strong> 상품수요는 <strong>지불능력 있는 수요</strong>이고 그 크기는 구매력과 같습니다. 구매력에 제한이 있으면 실제 필요(생활적 수요)보다 작게 나타납니다. 상품수요는 양적 규모(구매력과 가격으로 결정)와 수요구조(품목별 구성)를 가집니다.</p>
   <div class="tbl"><table class="cmp">
     <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
@@ -512,7 +607,9 @@ HC ≈ 연간물량 × 화물단가 × 보관비율 × (수송일수 / 365)</pre
 축적률 a = A / Y,   소비률 = C / Y = 1 − a
 
 조건: 축적의 절대규모 A ↑  그리고  1인당 소비 C/N ↑
-     → "축적의 우선적 장성 + 소비의 동시적 장성"</pre><span class="badge b-der">서술을 식으로</span></div>
+     → "축적의 우선적 장성 + 소비의 동시적 장성"
+
+N = 인구(주민 수), 따라서 C/N = 1인당 소비</pre><span class="badge b-der">서술을 식으로</span></div>
   </div>
   <ul class="tight">
     <li><strong>내부균형</strong>: 축적은 생산적 건설(우선)과 비생산적 건설로, 소비는 공동소비(사회문화시책, 더 많이)와 개인소비로 나눕니다.</li>
@@ -863,6 +960,41 @@ HC ≈ 연간물량 × 화물단가 × 보관비율 × (수송일수 / 365)</pre
     hit.addEventListener('pointerleave', () => { hideTip(tip); cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); });
   });
   document.getElementById('gd-a').addEventListener('input', gold);
+
+  /* 8. 유통액 W_t = ΣΣ M·C */
+  const WN = [['연료', '석탄'], ['연료', '석유'], ['금속', '강재'], ['금속', '비철금속'], ['화학', '비료'], ['화학', '가성소다']];
+  const wt = setupChart('ch-wt', ({ host, w, tip }) => {
+    const v = WN.map((_, k) => Math.max(0, num('w-m' + k)) * Math.max(0, num('w-c' + k)) / 1e4);
+    WN.forEach((_, k) => { document.getElementById('w-v' + k).textContent = fmt(v[k]); });
+    const cats = ['연료', '금속', '화학'];
+    const sub = cats.map((_, i) => v[2 * i] + v[2 * i + 1]);
+    const tot = sub.reduce((a, b) => a + b, 0), w0 = Math.max(1, num('w-w0'));
+    document.getElementById('w-tot').innerHTML = '<strong>' + fmt(tot) + '</strong>';
+    const h = 280, m = { l: 58, r: 12, t: 24, b: 34 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '부류별 유통액 누적 막대그래프' }, host);
+    const raw = Math.max(1, ...sub), step = nice(raw / 4), top = Math.ceil(raw / step) * step;
+    const y = val => m.t + ph - (val / top) * ph;
+    yAxis(svg, m, w, y, top, step, 0);
+    const bw = pw / cats.length, bar = Math.min(bw * 0.5, 90), cols = ['--s1', '--s2'];
+    cats.forEach((c, i) => {
+      const x = m.l + bw * i + (bw - bar) / 2; let cum = 0;
+      [0, 1].forEach(j => {
+        const k = 2 * i + j, val = v[k], y0 = y(cum), y1 = y(cum + val); cum += val;
+        const hh = (y0 - y1) - (j > 0 ? 2 : 0);
+        if (hh <= 0.5) return;
+        const el = j === 1 ? mk('path', { d: roundTop(x, y1, bar, hh, 4), style: `fill:var(${cols[j]})` }, svg) : mk('rect', { x: x, y: y1, width: bar, height: hh, style: `fill:var(${cols[j]})` }, svg);
+        if (hh > 16) txt(svg, x + bar / 2, y1 + hh / 2 + 4, fmt(val), 'val', 'middle').setAttribute('style', 'fill:#fff');
+        el.addEventListener('pointermove', e => { const p = pointerX(svg, e); showTip(tip, host, `<b>${c} / ${WN[k][1]}</b>` + row(cols[j], 'M·C', fmt(val) + '억원') + row('', '부류 합계', fmt(sub[i]) + '억원'), p.x, p.y); });
+        el.addEventListener('pointerleave', () => hideTip(tip));
+      });
+      txt(svg, x + bar / 2, h - m.b + 20, `${c} (i=${i + 1})`, 'tick', 'middle');
+      txt(svg, x + bar / 2, y(sub[i]) - 7, fmt(sub[i]), 'val', 'middle');
+    });
+    txt(svg, m.l, 12, '억원', 'ttl', 'end');
+    document.getElementById('w-out').innerHTML = `W<sub>t</sub> = ${sub.map(x => fmt(x)).join(' + ')} = <b>${fmt(tot)}억원</b> · W₀ ${fmt(w0)}억원 대비 <b>${fmt(tot / w0 * 100, 0)}%</b> (${fmt(tot / w0, 2)}배)`;
+  });
+  [0, 1, 2, 3, 4, 5].forEach(k => { document.getElementById('w-m' + k).addEventListener('input', wt); document.getElementById('w-c' + k).addEventListener('input', wt); });
+  document.getElementById('w-w0').addEventListener('input', wt);
 })();
 </script>
 
