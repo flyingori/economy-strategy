@@ -1,0 +1,870 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>경제전략 11·12장 학습노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Nanum+Myeongjo:wght@700;800&display=swap">
+<style>
+/* Layout: 교재 판형처럼 좁은 본문 단 하나 + 넓은 화면에서는 왼쪽에 고정 목차 */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #151a21;
+  --ink2: #455062;
+  --muted: #747f90;
+  --rule: #dbe0e7;
+  --accent: #1d5aa6;
+  --accent-soft: #e6eef8;
+  --ok: #2b7533;
+  --fix: #b1501a;
+  --add: #7d5b00;
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
+  --seg-c: #9aa3b0;
+  --f-display: "Nanum Myeongjo", "Batang", "AppleMyungjo", serif;
+  --f-body: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101318; --surface: #181c22; --ink: #eef1f5; --ink2: #bcc4cf; --muted: #8b94a2;
+    --rule: #2b313a; --accent: #7aaef0; --accent-soft: #1a273a; --ok: #62c46b; --fix: #f08a52; --add: #e2b84e;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --seg-c: #6b7482;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101318; --surface: #181c22; --ink: #eef1f5; --ink2: #bcc4cf; --muted: #8b94a2;
+  --rule: #2b313a; --accent: #7aaef0; --accent-soft: #1a273a; --ok: #62c46b; --fix: #f08a52; --add: #e2b84e;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --seg-c: #6b7482;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15.5px; line-height: 1.75; padding-inline: 16px; padding-block: 0 64px; }
+.page { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 48px; }
+@media (max-width: 960px) { .page { grid-template-columns: minmax(0, 1fr); gap: 0; } .toc { position: static !important; max-height: none !important; } }
+
+/* 목차 */
+.toc { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; padding-block: 40px 24px; max-height: 100vh; overflow-y: auto; font-size: 13.5px; }
+.toc p { font-size: 11.5px; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; }
+.toc ol { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 2px; }
+.toc a { color: var(--ink2); text-decoration: none; display: block; padding: 3px 8px; border-left: 2px solid transparent; }
+.toc a:hover, .toc a:focus-visible { color: var(--accent); border-left-color: var(--accent); outline: none; }
+.toc .ch { font-weight: 600; color: var(--ink); }
+
+main { min-width: 0; max-width: 780px; padding-block: 40px 0; }
+header.top { padding-block: 8px 28px; border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+.eyebrow { font-size: 12.5px; letter-spacing: .08em; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(30px, 5vw, 42px); line-height: 1.25; margin: 0 0 14px; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: 27px; line-height: 1.3; margin: 64px 0 6px; text-wrap: balance; }
+h2 .no { color: var(--accent); margin-right: .35em; }
+h3 { font-size: 19px; font-weight: 600; margin: 44px 0 10px; padding-top: 14px; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 .sec { font-family: var(--f-display); color: var(--accent); margin-right: .4em; }
+h4 { font-size: 15.5px; font-weight: 600; margin: 26px 0 6px; }
+p { margin: 0 0 12px; }
+.lede { font-size: 17px; color: var(--ink2); max-width: 62ch; }
+.chlede { color: var(--ink2); max-width: 64ch; }
+ul.tight { margin: 0 0 12px; padding-left: 1.2em; }
+ul.tight li { margin-bottom: 4px; }
+strong { font-weight: 600; }
+.muted { color: var(--muted); }
+
+/* 원본 표기 배지 */
+.badge { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; padding: 1px 8px; border-radius: 3px; border: 1px solid currentColor; vertical-align: 2px; margin-left: 6px; white-space: nowrap; }
+.b-src { color: var(--ok); }
+.b-der { color: var(--accent); }
+.b-sup { color: var(--add); }
+.b-fix { color: var(--fix); }
+
+/* 수식: 교재처럼 오른쪽에 식 번호 */
+.eq { background: var(--surface); border: 1px solid var(--rule); padding: 16px 18px; margin: 14px 0 16px; overflow-x: auto; }
+.eq pre { margin: 0; font-family: var(--f-mono); font-size: 14px; line-height: 1.8; color: var(--ink); }
+.eq .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.eq .num { font-family: var(--f-mono); color: var(--muted); font-size: 13px; }
+.eq .cap { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; font-family: var(--f-body); }
+
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; margin: 16px 0; font-size: 14.5px; }
+.note p:last-child { margin-bottom: 0; }
+
+/* 표 */
+.tbl { overflow-x: auto; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.6; min-width: 520px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+thead th { font-size: 12.5px; letter-spacing: .03em; color: var(--muted); font-weight: 600; border-bottom: 1.5px solid var(--ink2); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tbody th { font-weight: 600; }
+.cmp td:first-child { font-weight: 500; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 12px 0 18px; }
+.two > div { min-width: 0; background: var(--surface); border: 1px solid var(--rule); padding: 14px 16px; }
+.two h4 { margin-top: 0; }
+
+/* 그래프 */
+figure.viz { margin: 20px 0 24px; background: var(--surface); border: 1px solid var(--rule); padding: 16px 16px 12px; }
+figure.viz figcaption { font-size: 13px; color: var(--ink2); margin-top: 10px; }
+figure.viz figcaption b { color: var(--ink); }
+.viz-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; align-items: baseline; margin-bottom: 8px; }
+.viz-title { font-weight: 600; font-size: 14.5px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.sw.line { height: 3px; border-radius: 2px; }
+.plot-wrap { position: relative; }
+.plot { width: 100%; }
+.plot svg { display: block; overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); box-shadow: 0 4px 14px rgba(0,0,0,.12); padding: 8px 10px; font-size: 12.5px; line-height: 1.55; min-width: 140px; z-index: 5; font-variant-numeric: tabular-nums; }
+.tip b { display: block; margin-bottom: 2px; }
+.tip .r { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
+.tip .r span:first-child { display: inline-flex; align-items: center; gap: 6px; color: var(--ink2); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 4px 0 12px; font-size: 13px; color: var(--ink2); }
+.controls label { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.controls input[type=number] { width: 96px; font: inherit; font-variant-numeric: tabular-nums; color: var(--ink); background: var(--bg); border: 1px solid var(--rule); padding: 4px 6px; border-radius: 3px; }
+.controls input[type=range] { width: 200px; max-width: 100%; accent-color: var(--accent); }
+.controls input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.out { font-size: 13.5px; background: var(--bg); padding: 10px 12px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.out b { font-weight: 600; }
+details.data { margin-top: 8px; font-size: 13px; }
+details.data summary { cursor: pointer; color: var(--accent); }
+details.data table { min-width: 0; font-size: 13px; }
+
+svg text { font-family: var(--f-body); }
+svg .tick { fill: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+svg .lbl { fill: var(--ink2); font-size: 12px; }
+svg .val { fill: var(--ink); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+svg .ttl { fill: var(--muted); font-size: 11.5px; }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .axis { stroke: var(--muted); stroke-width: 1; }
+svg .hit { fill: transparent; cursor: crosshair; }
+svg .hit:hover { fill: var(--ink); fill-opacity: .04; }
+
+footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+<nav class="toc" aria-label="목차">
+  <p>목차</p>
+  <ol>
+    <li><a href="#check">원본과 같이 봐야할 항목</a></li>
+  </ol>
+  <ol>
+    <li><a class="ch" href="#ch11">제11장 생산물류통전략</a></li>
+    <li><a href="#s11-1">1절 목표 설정</a></li>
+    <li><a href="#s11-2">2절 생산과 소비의 연계</a></li>
+    <li><a href="#s11-3">3절 화물운수전략</a></li>
+  </ol>
+  <ol>
+    <li><a class="ch" href="#ch12">제12장 재정전략</a></li>
+    <li><a href="#value">가치 구성 c+v+m</a></li>
+    <li><a href="#s12-1">1절 국가자금전략</a></li>
+    <li><a href="#s12-2">2절 국가자금 조성</a></li>
+    <li><a href="#s12-3">3절 국가자금 이용</a></li>
+  </ol>
+  <ol>
+    <li><a href="#summary">종합 요약</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <p class="eyebrow">『경제전략』 학습노트 · 원본 181~208쪽</p>
+  <h1>생산물류통전략과 재정전략</h1>
+  <p class="lede">11장과 12장의 절별 핵심 개념과 키워드를 정리하고, 공식을 풀어 설명하고, 주류경제학의 비슷한 개념과 비교합니다. 그래프의 입력값은 바꿔볼 수 있습니다.</p>
+  <div class="note">
+    <p>이 책은 북한 교재입니다. 사회주의 계획경제와 마르크스주의 정치경제학(물적생산체계, MPS)을 전제로 하고, 용어도 북한식입니다.</p>
+    <p><strong>용어 대응</strong> · 류통 = 유통 · 련계 = 연계 · 리용 = 이용 · 화페 = 화폐 · 장성 = 성장 · 타산 = 계산·추산 · 눅은 값 = 싼 값 · 뜨다 = 느리다 · 돈자리 = 계좌</p>
+    <p><strong>공식 배지</strong> <span class="badge b-src">원본 공식</span> 교재에 실린 식 <span class="badge b-der">서술을 식으로</span> 본문 문장을 식으로 옮긴 것 <span class="badge b-sup">표준식 보충</span> 본문에는 방법 이름만 있어 같은 계열 교재의 표준식으로 보충한 것</p>
+  </div>
+</header>
+
+<section id="check">
+  <h3 style="border-top:0;margin-top:0;padding-top:0">원본과 같이 봐야할 항목</h3>
+  <p>처음에는 PDF에서 텍스트만 뽑아 읽었습니다. 그 뒤 원본 페이지를 이미지로 띄워 다시 대조했습니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>텍스트 추출 기반 첫 정리</th><th>원본 이미지 확인 결과</th></tr></thead>
+    <tbody>
+      <tr><td>V의 의미</td><td>성장지수(1+g)로 설명</td><td><span class="badge b-sup" style="margin:0">보완</span> 원본 용어는 "년평균장성속도"입니다. 거듭제곱 구조라서 지수(배수)로 읽어야 식이 성립합니다.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 11장 ============ -->
+<section id="ch11">
+  <h2><span class="no">제11장</span>생산물류통전략</h2>
+  <p class="chlede">생산물류통은 생산된 물자가 생산자에서 소비자로 옮겨가는 운동입니다. 이 장은 그 과정을 국가가 계획적으로 설계하는 방법을 다룹니다. 1절에서 목표를 숫자로 정하고, 2절에서 공급 조직을 짜고, 3절에서 운송을 설계합니다.</p>
+
+  <h3 id="s11-1"><span class="sec">1절</span>생산물류통전략: 목표를 숫자로 정하기</h3>
+  <p>전략목표는 <strong>유통의 총규모(유통량·유통액)와 그 성장속도</strong>로 정합니다. 유통총액에는 생산 진행 정도, 제품의 질, 화폐유통 규모, 유통에 드는 노동, 유통수단의 현대화 수준까지 반영된다고 봅니다.</p>
+
+  <h4>목표연도 유통 총량 <span class="badge b-src">원본 공식</span></h4>
+  <div class="eq">
+    <div class="row"><pre>M = M₁ + M₂ + M₃</pre><span class="num">(11−1)</span></div>
+<pre>M₁ = M생 · V생ᵀ    목표연도 생산물 총규모
+M₂ = M물 · V물ᵀ    목표연도 원료·자재 총규모
+M₃ = M무 · V무ᵀ    목표연도 무역규모</pre>
+    <p class="cap">원본 182쪽. 원료·자재와 수출입 물자는 운송화물의 기본단위인 톤(t)으로 정하는 것이 합리적이라고 명시합니다.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>기호</th><th>원본 정의</th></tr></thead>
+    <tbody>
+      <tr><td>M</td><td>전략기간에 도달해야 할 생산물류통 총량</td></tr>
+      <tr><td>M생 · M물 · M무</td><td>기초시기의 생산물 규모 · 원료·자재 총규모 · 무역규모</td></tr>
+      <tr><td>V생 · V물 · V무</td><td>전략기간 연평균 생산장성속도 · 원료·자재 증가속도 · 무역증가속도</td></tr>
+      <tr><td>T</td><td>전략기간(년)</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>V 읽는 법.</strong> 원본은 "장성속도"라고만 썼지만, T제곱을 하므로 <strong>V = 1 + 성장률</strong>을 넣어야 합니다. 5% 성장이면 1.05입니다. 북한 통계는 성장속도를 흔히 105%처럼 지수로 씁니다. 결국 세 항목에 복리 성장식 <code>미래값 = 현재값 × (1+g)ᵀ</code>를 각각 적용해 더한 것입니다.</p>
+
+  <figure class="viz" id="ch-growth">
+    <div class="viz-head">
+      <span class="viz-title">연도별 유통총량 M (만t) · 예시 값</span>
+      <span class="legend"><span><i class="sw" style="background:var(--s1)"></i>M₁ 생산물</span><span><i class="sw" style="background:var(--s2)"></i>M₂ 원료·자재</span><span><i class="sw" style="background:var(--s3)"></i>M₃ 무역</span></span>
+    </div>
+    <div class="controls">
+      <label for="g-ms">M생 기초 (만t)<input id="g-ms" type="number" value="1000" min="0" step="50"></label>
+      <label for="g-gs">생산 성장률 (%)<input id="g-gs" type="number" value="5" step="0.5"></label>
+      <label for="g-mm">M물 기초 (만t)<input id="g-mm" type="number" value="1500" min="0" step="50"></label>
+      <label for="g-gm">원료·자재 증가율 (%)<input id="g-gm" type="number" value="4" step="0.5"></label>
+      <label for="g-mt">M무 기초 (만t)<input id="g-mt" type="number" value="300" min="0" step="10"></label>
+      <label for="g-gt">무역 증가율 (%)<input id="g-gt" type="number" value="7" step="0.5"></label>
+      <label for="g-T">전략기간 T (년)<input id="g-T" type="number" value="5" min="1" max="15" step="1"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <div class="out" id="g-out"></div>
+    <details class="data"><summary>데이터 표 보기</summary><div class="tbl"><table><thead><tr><th>연도</th><th class="n">M₁</th><th class="n">M₂</th><th class="n">M₃</th><th class="n">합계 M</th></tr></thead><tbody id="g-tbody"></tbody></table></div></details>
+    <figcaption><b>읽는 법.</b> 기본값에서 M₁ = 1,000 × 1.05⁵ ≈ 1,276만t입니다. M₂와 M₃도 같은 방식으로 구해 더하면 5년 뒤 운송망이 감당해야 할 물동량이 나옵니다. 생산물과 원자재를 더하면 금액으로는 중복계산이지만, 여기서는 <b>실어 나를 무게</b>를 재는 것이 목적이므로 톤 기준 합산에 의미가 있습니다.</figcaption>
+  </figure>
+
+  <h4>목표연도 유통 금액 <span class="badge b-src">원본 공식</span></h4>
+  <div class="eq">
+    <div class="row"><pre>        m   n
+W_t  =  Σ   Σ   M_ij · C_ij
+       i=1 j=1</pre><span class="num">(11−2)</span></div>
+    <p class="cap">원본 183쪽. W<sub>t</sub>는 전략기간 마지막 해의 유통액(원), M<sub>ij</sub>는 i번째 부류 j번째 제품의 현물량(t), C<sub>ij</sub>는 그 제품의 톤당 가격(원/t)입니다.</p>
+  </div>
+  <p>품목마다 단위가 달라 그냥 더할 수 없습니다. 그래서 모두 <strong>물량 × 톤당 가격</strong>으로 바꾼 뒤 합산합니다. 아래는 예시 값입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>부류 i / 제품 j</th><th class="n">M<sub>ij</sub> (만t)</th><th class="n">C<sub>ij</sub> (원/t)</th><th class="n">M<sub>ij</sub>·C<sub>ij</sub> (억원)</th></tr></thead>
+    <tbody>
+      <tr><td>연료 / 석탄</td><td class="n">1,200</td><td class="n">25,000</td><td class="n">3,000</td></tr>
+      <tr><td>금속 / 강재</td><td class="n">300</td><td class="n">400,000</td><td class="n">12,000</td></tr>
+      <tr><td>화학 / 비료</td><td class="n">150</td><td class="n">300,000</td><td class="n">4,500</td></tr>
+      <tr><th>W<sub>t</sub></th><td></td><td></td><td class="n"><strong>19,500</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="eq">
+    <div class="row"><pre>생산물류통수준 = W_t / W_0</pre><span class="badge b-der">서술을 식으로</span></div>
+    <p class="cap">"기초수준에 비한 전략기간의 생산물의 총류통액의 비률". 예시에서 W₀ = 15,000억원이면 19,500 ÷ 15,000 = 1.30, 즉 130%입니다.</p>
+  </div>
+  <ul class="tight">
+    <li><strong>예비 유통량</strong>: 자연재해 복구는 과거 자료로 특정 지역 기준 물동량을 계산하고, 화재는 과거 최대 화재 복구 물동량을 목표에 더합니다.</li>
+    <li><strong>전략적 방향</strong>: 철도·자동차·배·관·삭도·컨베이어 수송을 결합해 수송능력을 생산 성장에 맞춥니다. 지역 간 생산·소비 연관을 "해부학적으로" 분석해 가장 합리적인 방안을 고릅니다.</li>
+  </ul>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>M = M₁+M₂+M₃</td><td>화물수요 예측, 공급·사용표의 "총공급 = 산출 + 수입"</td><td>주류는 GDP 대비 화물 탄력성이나 산업연관표로 추계합니다. 교재는 항목별 고정 성장률로 외삽합니다.</td></tr>
+      <tr><td>Vᵀ</td><td>복리 외삽, 연평균성장률(CAGR)</td><td>같은 수학입니다.</td></tr>
+      <tr><td>W<sub>t</sub> = ΣΣMC</td><td>명목 산출액 집계</td><td>실질·명목 구분이 없어 W<sub>t</sub>/W<sub>0</sub>에 가격 변화가 섞입니다. 주류라면 디플레이터를 적용합니다.</td></tr>
+      <tr><td>예비 유통량</td><td>안전재고, 비상 대비 물량</td><td>같은 개념입니다.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="s11-2"><span class="sec">2절</span>생산과 소비의 합리적 연계 보장</h3>
+  <p>국가가 계획에 따라 생산수단(자재·설비)과 소비품을 차질 없이 공급하는 조직을 짜는 문제입니다. 생산수단을 계획적으로 보장하는 기본 방도는 "국가가 계획에 맞물려 생산공급하는 것"입니다.</p>
+  <div class="two">
+    <div>
+      <h4>생산수단 공급: 자재공급기구체계</h4>
+      <ul class="tight">
+        <li><strong>자재상사</strong>: 자재공급의 기본단위. 계획과 계약에 따라 기업에 자재를 현물로 직접 공급하는 <strong>독립채산제</strong> 단위</li>
+        <li>기능별로 자재보장형·제품판매형·겸용형, 소속별로 국가 소속·도 소속으로 나뉨</li>
+        <li>하부단위: 분상사(지구공급소), 공급소(판매소)</li>
+        <li>기업 내부: 자재공급소와 원자재·반제품·직장 창고, 제품창고. 자재를 "생산현장의 기대 앞까지" 공급</li>
+        <li>자재소비 통제, 남거나 모자라는 자재의 기업 간 교류</li>
+      </ul>
+    </div>
+    <div>
+      <h4>소비품 공급: 상업체계</h4>
+      <ul class="tight">
+        <li>국영상업(주도), 협동단체상업, <strong>지역시장</strong>으로 실현</li>
+        <li><strong>도매</strong>: 상품원천 장악, 지역 간 상품운동, 소매 공급</li>
+        <li><strong>소매상업망</strong>: 유통의 마지막 단계, 주민지대 가까이 배치</li>
+        <li><strong>사회급양망</strong>: 공동주방. 여성의 가사부담 경감</li>
+        <li><strong>수매기관</strong>: 국가가 구매자가 되어 농토산물·유휴자재 매입</li>
+        <li><strong>주문제</strong>: 소매→도매→생산기업 순서의 주문에 따른 계획생산·계획공급</li>
+      </ul>
+    </div>
+  </div>
+  <p><strong>수요 개념.</strong> 상품수요는 <strong>지불능력 있는 수요</strong>이고 그 크기는 구매력과 같습니다. 구매력에 제한이 있으면 실제 필요(생활적 수요)보다 작게 나타납니다. 상품수요는 양적 규모(구매력과 가격으로 결정)와 수요구조(품목별 구성)를 가집니다.</p>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>지불능력 있는 수요 / 생활적 수요</td><td>유효수요, 예산제약 하의 수요 / 필요(needs)</td><td>구분은 같습니다. 주류에서는 가격이 수요와 공급을 맞추고, 교재에서는 국가가 수요를 연구해 공급을 맞춥니다.</td></tr>
+      <tr><td>자재공급체계·자재상사</td><td>공급망관리(SCM), B2B 도매·유통</td><td>주류는 시장 거래로, 교재는 행정 배분과 계약(소련 고스납형)으로 조정합니다.</td></tr>
+      <tr><td>주문제</td><td>주문생산, 수요 주도 공급망</td><td>코르나이의 부족경제론은 이런 체계에서 정보 문제와 연성예산제약 때문에 만성 부족이 생긴다고 비판합니다.</td></tr>
+      <tr><td>수매</td><td>정부 농산물 수매, 가격지지</td><td>주류에서는 시장을 보완하는 정책이고, 교재에서는 농산물을 국가가 장악하는 기본 통로입니다.</td></tr>
+      <tr><td>수요구조 연구</td><td>소비지출 구조 분석, 엥겔 법칙</td><td>방법론은 비슷합니다.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="s11-3"><span class="sec">3절</span>화물운수전략</h3>
+  <p>수송은 "인민경제의 선행관"입니다. 다른 부문과 운송의 관계는 <strong>수송수요 대 수송능력</strong>으로 나타납니다. 유통비용은 수송비·보관비·포장비·상하차비·유통 중 손실로 이루어지고, 그중 <strong>수송비 비중이 가장 큽니다</strong>. 목표인 전략기간 화물수송량은 사회총생산물 성장속도에 맞춰 시계열·회귀분석으로 추정하고, 방향은 <strong>철도를 기본</strong>으로 도로·수상운수를 함께 발전시키는 것입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>운송형태</th><th>장점</th><th>단점</th></tr></thead>
+    <tbody>
+      <tr><td>철도</td><td>빠르고 대량, 저비용, 계절 영향 적음</td><td>철길이 있는 곳까지만 감</td></tr>
+      <tr><td>도로</td><td>기동성, 상하차 용이, 단거리에서 저렴</td><td>장거리 원가·에너지 소비가 크고 소음·배기가스</td></tr>
+      <tr><td>수상</td><td>적재량이 크고 에너지 소비 적음</td><td>물길에서만 가능, 속도가 "뜸"(느림), 상하선비용, 계절 영향</td></tr>
+      <tr><td>관·삭도·컨베이어</td><td>특정 물동에 특화</td><td>범위가 제한됨</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>실현 방도</strong>는 두 가지입니다. 첫째, 철도의 중량화·현대화(기관차·철길·역·통신 개건)와 복선·순환선 형성입니다. 둘째, 운수방식의 합리적 결정입니다. 운수방식은 형태(철도 등) × 수단(기관차·화차 등) × 방법(연대·집중·짐함(컨테이너)·산적 수송)의 조합입니다.</p>
+
+  <h4>그림 11−1 운수형태와 지출비용의 호상관계 <span class="badge b-fix">원본 확인 후 수정</span></h4>
+  <figure class="viz" id="ch-fig">
+    <div class="viz-head">
+      <span class="viz-title">수송비용 + 보관비용 = 총비용</span>
+      <span class="legend"><span><i class="sw line" style="background:var(--s1)"></i>총비용</span><span><i class="sw line" style="background:var(--s2)"></i>수송비용</span><span><i class="sw line" style="background:var(--s3)"></i>보관비용</span></span>
+    </div>
+    <div class="controls">
+      <label for="fig-w">보관비 가중치 w (화물 가치가 높을수록 큼) <span id="fig-w-val" class="muted">w = 1.00 · 원본 그림</span><input id="fig-w" type="range" min="0.4" max="2.5" step="0.05" value="1"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <div class="out" id="fig-out"></div>
+    <figcaption><b>원본 192쪽을 다시 그린 것입니다.</b> 가로축은 연속 변수가 아니라 운수형태를 빠른 순서로 늘어놓은 것이고, 세로축에는 원본에도 눈금이 없습니다(정성적 도식). 수송비용은 수상에서 가장 낮고 비행기 쪽으로 가파르게 오르며, 보관비용은 그 반대입니다. 두 곡선은 도로 부근에서 교차하고, <b>총비용 최저점은 철도와 도로 사이</b>에 있습니다. 이 그림이 "철도를 기본으로 하면서 도로운수를 발전"시키는 노선의 근거 역할을 합니다. 슬라이더는 원본에 없는 설명용 장치입니다. 값비싼 화물일수록(w↑) 재고로 묶이는 비용이 커져 최저점이 빠른 운송 쪽으로 옮겨갑니다.</figcaption>
+  </figure>
+  <div class="eq">
+    <div class="row"><pre>총비용 TC = 수송비용 TrC + 보관비용 HC   → TC가 최소인 운수형태 선택
+
+HC ≈ 연간물량 × 화물단가 × 보관비율 × (수송일수 / 365)</pre><span class="badge b-der">서술을 식으로</span></div>
+    <p class="cap">느린 운송일수록 그만큼 돈이 재고로 오래 묶입니다. 그래서 본문은 수송의 효과성을 수송비용 하나로 따질 수 없고 수송속도와 함께 보아야 한다고 말합니다. 신속성·안전성·편리성·경제적 효과성은 서로 제약하는 관계입니다.</p>
+  </div>
+
+  <h4>투자와 운영비의 관계 <span class="badge b-sup">표준식 보충</span></h4>
+  <p>본문은 "환산비용에 의한 타산방법"과 "추가적 투자의 보상기간에 의한 타산방법"이라는 이름만 제시합니다. 아래는 소련·북한 경제학의 표준식입니다.</p>
+  <div class="eq">
+<pre>환산비용 Zᵢ = Cᵢ + Eₙ · Kᵢ   → 최소인 방안 선택
+   Cᵢ 연간 운영비 · Kᵢ 기본투자 · Eₙ 표준 효율계수
+
+추가투자 보상기간 T = (K₂ − K₁) / (C₁ − C₂)
+   T ≤ 표준 보상기간 1/Eₙ 이면 투자가 큰 방안 2 채택</pre>
+  </div>
+  <figure class="viz" id="ch-pay">
+    <div class="viz-head">
+      <span class="viz-title">누적 비용 = 투자 + 운영비 × 연수 (억원) · 예시 값</span>
+      <span class="legend"><span><i class="sw line" style="background:var(--s1)"></i>방안 1 (투자 적음)</span><span><i class="sw line" style="background:var(--s2)"></i>방안 2 (투자 많음)</span></span>
+    </div>
+    <div class="controls">
+      <label for="pb-k1">K₁ 투자<input id="pb-k1" type="number" value="200" min="0" step="10"></label>
+      <label for="pb-c1">C₁ 운영비/년<input id="pb-c1" type="number" value="60" min="0" step="5"></label>
+      <label for="pb-k2">K₂ 투자<input id="pb-k2" type="number" value="300" min="0" step="10"></label>
+      <label for="pb-c2">C₂ 운영비/년<input id="pb-c2" type="number" value="40" min="0" step="5"></label>
+      <label for="pb-en">Eₙ 효율계수<input id="pb-en" type="number" value="0.125" min="0.01" max="1" step="0.005"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <div class="out" id="pb-out"></div>
+    <figcaption><b>읽는 법.</b> 두 선이 만나는 해가 추가투자 보상기간 T입니다. 기본값에서 방안 2는 투자가 100억 많지만 운영비가 매년 20억 적어 5년 만에 회수합니다. 표준 보상기간 1/Eₙ = 8년보다 짧으므로 방안 2를 채택합니다. 환산비용으로 계산해도 결론이 같습니다.</figcaption>
+  </figure>
+  <p><strong>다기준 평가.</strong> 경제적 효과성·신속성·안전성·편리성을 기본지표로 삼고, 비율척도법·순위척도법·상관분석법으로 종합 평가합니다.</p>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>수송수요 대 수송능력</td><td>교통경제학의 파생수요, 인프라 용량계획</td><td>주류는 혼잡요금 같은 가격으로도 수요를 관리합니다.</td></tr>
+      <tr><td>그림 11−1</td><td>물류 총비용 트레이드오프, Baumol–Vinod 수단선택 모형</td><td>구조가 거의 같습니다. 주류 모형은 운송 중 재고와 안전재고를 수식으로 넣고 화물마다 최적 수단이 달라집니다. 교재 그림은 나라 전체에 하나의 결론(철도~도로)을 끌어내는 정성적 도식입니다.</td></tr>
+      <tr><td>환산비용 C + Eₙ·K</td><td>연간등가비용(EAC), 순현재가치(NPV)</td><td>Eₙ이 할인율 역할을 하지만 복리 할인이 없어 근사적입니다.</td></tr>
+      <tr><td>보상기간</td><td>회수기간법</td><td>같은 개념이고, 회수 이후의 현금흐름을 무시한다는 한계도 같습니다.</td></tr>
+      <tr><td>비율·순위척도법</td><td>다기준의사결정(MCDA), AHP</td><td>같은 계열입니다.</td></tr>
+      <tr><td>철도 기본 노선</td><td>수단분담, 복합운송</td><td>주류에서는 시장 경쟁과 비용편익분석으로 분담이 정해지고, 교재에서는 국가가 방향을 정합니다.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ 12장 ============ -->
+<section id="ch12">
+  <h2><span class="no">제12장</span>재정전략</h2>
+  <p class="chlede">나라의 화폐자금을 국가 수중에 집중시켜 통일적·계획적·전망적으로 관리하는 전략입니다. 1절은 전략 총론, 2절은 자금 조성(수입), 3절은 자금 이용(지출)입니다. 12장 원본에는 수식이 없으므로, 아래 식은 모두 본문 서술을 식으로 옮긴 것입니다.</p>
+
+  <h3 id="value"><span class="sec">기초</span>마르크스주의 가치 구성</h3>
+  <div class="eq">
+<pre>사회총생산물 = c + v + m
+   c 소비된 생산수단(원료·감가상각) · v 노동자 몫 · m 사회순소득
+국민소득 = v + m
+순소득   = m   ← 국가자금의 원천</pre>
+  </div>
+  <figure class="viz" id="ch-value">
+    <div class="viz-head">
+      <span class="viz-title">사회총생산이 늘어도 국민소득은 줄 수 있다 · 예시 값</span>
+      <span class="legend"><span><i class="sw" style="background:var(--seg-c);opacity:.55"></i>c 소비된 생산수단</span><span><i class="sw" style="background:var(--s1);opacity:.55"></i>v 노동자 몫</span><span><i class="sw" style="background:var(--s2);opacity:.55"></i>m 사회순소득</span></span>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <figcaption><b>본문의 경고를 그림으로.</b> "소비된 생산수단의 몫이 사회총생산에서 차지하는 비중이 높은 경우" 사회를 위해 새로 창조되는 몫이 적을 수 있습니다. 예시에서 사회총생산은 100에서 116으로 16% 늘었지만 c가 60에서 78로 커져 국민소득은 40에서 38로, 순소득은 15에서 14로 줄었습니다. 주류로 옮기면 총산출이 늘어도 부가가치(GDP)는 늘지 않을 수 있다는 뜻입니다.</figcaption>
+  </figure>
+
+  <h3 id="s12-1"><span class="sec">1절</span>국가자금전략</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>용어</th><th>정의</th></tr></thead>
+    <tbody>
+      <tr><td>국가자금</td><td>국가 수중에 집중해 이용할 수 있는 화폐자금</td></tr>
+      <tr><td>자금관계</td><td>재생산 과정의 화폐자금 간 상호관계. 국가예산 중심 관계(중추) + 은행자금관계(화폐발행·은행신용)</td></tr>
+      <tr><td>재정적 토대</td><td>국가가 화폐자원을 동원할 수 있는 경제적 밑천. 예산수입원천 + 축적금(국가축적금, 기업 화폐축적, 근로자 저축)</td></tr>
+      <tr><td>물질적 토대</td><td>생산의 물질기술적 수단의 총체. 재정적 토대의 전제일 뿐 재정적 토대 자체는 아님</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>기본 방향</strong>은 "자체의 힘으로 모든 재정문제를 풀어나가는 것"입니다. 남의 재정에 의존하면 자립경제가 될 수 없고 경제적 예속으로 이어진다고 봅니다.</p>
+  <p><strong>목표 설정 방법</strong>은 세 가지입니다. ① 경제성장과 국가자금 성장의 시계열분석, ② 국민소득 성장과 국가자금 성장의 비례관계(기업축적·개인저축으로 보정), ③ 사회순소득 성장과 국가자금 성장의 관계입니다. ①에서 말하는 "경제장성 1%당 국가자금장성수준"은 다음과 같습니다.</p>
+  <div class="eq">
+    <div class="row"><pre>e = (ΔF / F) ÷ (ΔY / Y)
+목표 국가자금 ≈ 현재 국가자금 × (1 + e × 목표성장률)ᵀ</pre><span class="badge b-der">서술을 식으로</span></div>
+    <p class="cap">예: 경제가 4% 성장할 때 국가자금이 6% 늘었다면 e = 1.5입니다. 본문은 e가 매해 같지 않으며, 소비된 생산수단 몫이 커지면 e가 낮아질 수 있으니 그 원인을 밝히라고 합니다.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>재정토대의 원천</th><th>성격</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td>국영기업소 내부축적</td><td><strong>가장 큰 원천</strong>. 사회를 위한 노동이 만든 순소득</td><td>국가 동원 시 불반환</td></tr>
+      <tr><td>협동경리 내부축적</td><td>협동적 소유 범위의 순소득</td><td>생산성이 낮고 자체 확대재생산에 쓰는 몫이 커서 예산납부가 적음</td></tr>
+      <tr><td>근로자 저축금</td><td>자기를 위한 노동의 개인소득이 원천</td><td>반환이 필요한 융자 성격. 일시적이고 소규모지만 유휴자금 동원 의의</td></tr>
+      <tr><td>화폐제도·재정금융체계</td><td>민족화폐로 가격 책정·평가, 은행이 유휴자금 동원</td><td>민주주의 중앙집권제 원칙으로 각급 기관의 임무·권한 규정</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>국가자금</td><td>정부 재원, 공공재정</td><td>주류에서 정부는 경제의 일부이고, 교재에서 국가는 자금 흐름의 기축입니다.</td></tr>
+      <tr><td>예산 + 은행자금관계</td><td>재정정책 + 통화정책</td><td>교재는 단일은행(monobank) 체계를 전제하고, 주류는 독립 중앙은행과 상업은행을 분리합니다.</td></tr>
+      <tr><td>재정적 토대</td><td>재정여력(fiscal space), 재정능력</td><td>주류는 국채·해외차입도 정상 재원으로 보고, 교재는 외자를 배격합니다.</td></tr>
+      <tr><td>성장 1%당 국가자금 성장</td><td>세수 탄성치·부력</td><td>수학적으로 같습니다.</td></tr>
+      <tr><td>국영기업 축적이 주재원</td><td>주류는 조세가 주재원</td><td>북한은 1974년에 세금 폐지를 선언해 기업 납부금이 실질적인 세금 역할을 합니다(교재 밖 배경지식).</td></tr>
+      <tr><td>근로자 저축</td><td>가계저축 → 금융중개, 국채</td><td>주류에서는 저축이 금융시장을 거쳐 민간투자로 가고, 교재에서는 국가자금으로 직접 동원합니다.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="s12-2"><span class="sec">2절</span>국가자금의 합리적 조성</h3>
+  <p>국가자금의 원천은 외자가 아니라 <strong>사회주의적 확대재생산 과정에서 생기는 순소득</strong>입니다. 원천을 외자에 두면 "자기 식으로" 경제를 발전시킬 수 없다고 봅니다.</p>
+  <h4>① 공장·기업소의 순소득 증대</h4>
+  <div class="eq">
+    <div class="row"><pre>Π = Q × m          Q 생산량 · m 단위생산물당 순소득(가격 − 원가)
+ΔΠ = m·ΔQ + Q·Δm + ΔQ·Δm</pre><span class="badge b-der">서술을 식으로</span></div>
+    <p class="cap">본문: m이 일정하면 순소득은 생산량에 비례하고, 생산량이 일정하면 m에 비례한다. 둘 다 늘면 순소득이 "절대적으로" 성장한다.</p>
+  </div>
+  <figure class="viz" id="ch-area">
+    <div class="viz-head">
+      <span class="viz-title">순소득 증가분 분해 (넓이 = 순소득) · 예시 값</span>
+      <span class="legend"><span><i class="sw" style="background:var(--seg-c);opacity:.55"></i>기존 Q·m</span><span><i class="sw" style="background:var(--s1);opacity:.55"></i>양적 성장 m·ΔQ</span><span><i class="sw" style="background:var(--s2);opacity:.55"></i>원가저하·질 Q·Δm</span><span><i class="sw" style="background:var(--s3);opacity:.55"></i>교차 ΔQ·Δm</span></span>
+    </div>
+    <div class="controls">
+      <label for="ar-dq">생산량 증가 ΔQ <span id="ar-dq-val" class="muted">20%</span><input id="ar-dq" type="range" min="0" max="60" step="1" value="20"></label>
+      <label for="ar-dm">단위당 순소득 증가 Δm <span id="ar-dm-val" class="muted">15%</span><input id="ar-dm" type="range" min="0" max="60" step="1" value="15"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <div class="out" id="ar-out"></div>
+    <figcaption><b>읽는 법.</b> 기준은 Q = 100, m = 20, Π = 2,000입니다. 오른쪽 띠는 더 많이 만들어서, 위쪽 띠는 원가를 낮추거나 질을 높여서 생긴 순소득입니다. 오른쪽 위 모서리는 둘이 동시에 늘 때만 생기는 몫으로, 본문이 말하는 "절대적 장성"에 해당합니다.</figcaption>
+  </figure>
+  <ul class="tight">
+    <li><strong>양적 장성</strong>: 생산 확대. 특히 지식경제 시대의 정보기술·전자제품 같은 첨단제품을 강조합니다.</li>
+    <li><strong>원가 저하</strong>: 원료·자재·노력 절약과 소비기준 인하로 m을 키웁니다. "실리보장의 원칙"을 내세웁니다.</li>
+    <li><strong>품종 확대</strong>: 생산자원을 효율적으로 이용하고 수요를 충족시킵니다.</li>
+  </ul>
+
+  <h4>② 국가예산중앙적립금</h4>
+  <div class="eq">
+    <div class="row"><pre>적립금ₜ = 적립금ₜ₋₁ + (예산수입ₜ − 예산지출ₜ)</pre><span class="badge b-der">서술을 식으로</span></div>
+    <p class="cap">매년 결산의 수입초과액을 다음 해로 넘겨 따로 쌓은 국가 축적자금입니다. 특별히 중요한 시책이나 긴요한 자금수요에 승인 절차를 거쳐 씁니다.</p>
+  </div>
+  <figure class="viz" id="ch-res">
+    <div class="viz-head">
+      <span class="viz-title">연간 수지와 누적 적립금 (억원) · 예시 값</span>
+      <span class="legend"><span><i class="sw" style="background:var(--s1)"></i>연간 수입초과(−는 적자)</span><span><i class="sw line" style="background:var(--s2)"></i>누적 적립금</span></span>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <details class="data"><summary>데이터 표 보기</summary><div class="tbl"><table><thead><tr><th>연도</th><th class="n">수입 − 지출</th><th class="n">누적 적립금</th></tr></thead><tbody id="res-tbody"></tbody></table></div></details>
+    <figcaption><b>읽는 법.</b> 기초 적립금 20억에서 시작합니다. 3년차처럼 적자가 나면 적립금이 줄어듭니다. 본문은 그래서 <b>"수입에 지출을 맞추는"</b> 원칙을 세웁니다. 수입 성장속도를 지출보다 높이고, 그래도 수지편차가 남으면 비생산적·부차적 지출부터 줄입니다. 증산 과제는 현대 기술을 갖춘 핵심 부문에, 절약 과제는 모든 부문에 줍니다.</figcaption>
+  </figure>
+  <h4>③ 유휴화폐자금 동원</h4>
+  <p>정상적인 재생산 과정에서 일시적으로 벗어나 놀고 있는 돈입니다. 기관·기업소의 은행계좌(돈자리) 잔고와 주민 수중의 현금으로 이루어집니다. 잔고를 정확히 계산하고, 주민의 돈은 저금·보험으로 흡수합니다.</p>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>Π = Q × m</td><td>기업이윤 = Q(P − AC)</td><td>식은 같습니다. 주류에서 이윤은 소유자의 것이고, 교재에서는 국가자금 원천입니다.</td></tr>
+      <tr><td>원가 저하</td><td>생산성 향상, 총요소생산성(TFP)</td><td>주류는 경쟁 압력이 원가 절감을 이끕니다. 교재는 계획상 소비기준과 통제에 의존합니다.</td></tr>
+      <tr><td>품종 확대</td><td>범위의 경제, 제품 다양성</td><td>비슷합니다.</td></tr>
+      <tr><td>지식경제 강조</td><td>내생적 성장이론(Romer)</td><td>방향은 같지만, "산노동 없이 생산"한다는 표현은 노동가치론과 긴장 관계에 있습니다.</td></tr>
+      <tr><td>중앙적립금</td><td>재정안정화기금, 예비비, 국부펀드</td><td>형태가 비슷합니다.</td></tr>
+      <tr><td><strong>수입에 지출을 맞춤</strong></td><td>전통적 양입제출(量入制出), 균형재정준칙</td><td><strong>가장 큰 철학적 차이입니다.</strong> 현대 재정학은 필요한 지출을 먼저 정하고 수입을 맞추는 양출제입(量出制入)을 따르고, 케인스주의는 불황기 경기대응적 적자를 정당화합니다. 교재는 적자를 원칙적으로 배격합니다.</td></tr>
+      <tr><td>유휴화폐자금</td><td>케인스의 유동성 선호·퇴장화폐, 금융중개</td><td>주류는 금리로 유휴자금을 끌어내고, 교재는 해설사업(설득)과 은행의 책임성에 기댑니다.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="s12-3"><span class="sec">3절</span>국가자금의 합리적 이용</h3>
+  <p>국가예산지출은 선군 영도 보장(국방), 인민경제, 인민 복리증진, 국가관리에 대한 지출로 이루어집니다. "사회주의 원칙을 고수하면서 실리를 보장"하는 것이 전제입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>분석 축</th><th>내용</th><th>원칙</th></tr></thead>
+    <tbody>
+      <tr><td>요소별</td><td>국방, 인민경제(기본건설·대보수·사업비), 복리, 국가관리</td><td>국방력 강화 자금을 원만히 보장했는지 특별히 점검</td></tr>
+      <tr><td>방향별</td><td>생산적 대 비생산적, 축적 대 소비</td><td>생산적 지출 우위, 확대재생산을 위한 축적 지출 우위</td></tr>
+      <tr><td>부문별</td><td>독립채산 부문(공업·농업·건설·운수 등) / 예산 부문(교육·보건·문화 등)</td><td>독립채산 부문은 고정재산 확보·개건, 예산 부문은 운영자금. 부문 간 균형</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>수지균형</strong>은 숫자만 맞추는 일이 아니라 정책 요구를 반영하는 과정이어야 합니다. 기업에서 부문·지역을 거쳐 국가에 이르는 모든 전략수립 단계에서 수입·지출 항목별로 <strong>절약예비</strong>를 찾아 동원합니다.</p>
+
+  <h4>축적과 소비의 균형</h4>
+  <div class="eq">
+    <div class="row"><pre>국민소득 Y = 축적 A + 소비 C
+축적률 a = A / Y,   소비률 = C / Y = 1 − a
+
+조건: 축적의 절대규모 A ↑  그리고  1인당 소비 C/N ↑
+     → "축적의 우선적 장성 + 소비의 동시적 장성"</pre><span class="badge b-der">서술을 식으로</span></div>
+  </div>
+  <ul class="tight">
+    <li><strong>내부균형</strong>: 축적은 생산적 건설(우선)과 비생산적 건설로, 소비는 공동소비(사회문화시책, 더 많이)와 개인소비로 나눕니다.</li>
+    <li><strong>내부지표</strong>: 기본건설투자와 국가예비 증대는 축적에, 생활비와 국가적 혜택 증가는 소비에 영향을 줍니다.</li>
+    <li><strong>현물 담보</strong>: 축적은 생산수단(특히 노동수단)으로, 소비는 소비재로 실현되므로 각각의 실물 생산이 뒷받침되어야 합니다.</li>
+    <li><strong>상호작용</strong>: 축적의 궁극적 목적은 소비입니다. 축적이 빨리 소비로 전환되도록, 중공업이 국방공업·경공업·농업에 복무하게 합니다.</li>
+    <li><strong>영향요인</strong>: 경제발전 방향과 정책 과업, 감가상각금(축적 원천), 부문구조 개선, 국방지출 예견</li>
+  </ul>
+  <figure class="viz" id="ch-gold">
+    <div class="viz-head">
+      <span class="viz-title">주류 비교: 솔로 모형의 저축률과 정상상태 1인당 소비</span>
+      <span class="legend"><span><i class="sw line" style="background:var(--s1)"></i>정상상태 1인당 소비 c*</span></span>
+    </div>
+    <div class="controls">
+      <label for="gd-a">자본소득 비중 α <span id="gd-a-val" class="muted">0.33</span><input id="gd-a" type="range" min="0.2" max="0.5" step="0.01" value="0.33"></label>
+    </div>
+    <div class="plot-wrap"><div class="plot"></div><div class="tip" hidden></div></div>
+    <figcaption><b>왜 이 그래프인가.</b> 교재의 "축적률"은 주류의 저축률(투자율) s에 해당합니다. 솔로 모형(y = k<sup>α</sup>, 인구증가율 + 감가상각률 = 7% 가정)에서 1인당 소비는 저축률이 α일 때 최대가 됩니다. 이것이 <b>황금률</b>(MPK = n + δ)입니다. 저축률을 그 이상 올리면 자본은 늘어도 소비는 오히려 줄어듭니다(동태적 비효율). 그래서 주류의 관점에서는 "축적의 우선적 장성"을 무한정 이어갈 수 없습니다. 소련형 경제의 소비 억압도 이 관점에서 비판받습니다.</figcaption>
+  </figure>
+  <div class="tbl"><table class="cmp">
+    <thead><tr><th>교재 개념</th><th>주류 대응</th><th>차이점</th></tr></thead>
+    <tbody>
+      <tr><td>요소별 지출 분류</td><td>COFOG 기능별 분류</td><td>구조가 비슷합니다.</td></tr>
+      <tr><td>생산적 대 비생산적</td><td>자본지출 대 경상지출; MPS 대 SNA</td><td>SNA는 서비스·교육·보건도 생산으로 봅니다.</td></tr>
+      <tr><td>축적 대 소비</td><td>투자 대 소비, Y = C + I + G</td><td>같은 구도입니다.</td></tr>
+      <tr><td>축적의 우선적 장성</td><td>펠드만–마할라노비스 모형(중공업 우선), 마르크스의 생산수단 우선성장</td><td>솔로 모형에서는 저축률을 올려도 장기 성장률은 그대로이고 소득 수준만 올라갑니다. 황금률을 넘으면 과잉축적입니다.</td></tr>
+      <tr><td>공동소비 우선</td><td>정부 최종소비, 현물이전</td><td>주류는 개인 선택을 기본으로 하고, 공공재와 외부성이 있는 영역만 공공이 공급합니다.</td></tr>
+      <tr><td>축적의 빠른 소비 전환</td><td>투자 회임기간</td><td>비슷합니다.</td></tr>
+      <tr><td>국방지출 최우선</td><td>총과 버터, 생산가능곡선상의 기회비용</td><td>주류는 기회비용을 명시적으로 비교하고, 교재는 "무조건 최우선"입니다.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="summary">
+  <h2><span class="no">종합</span>요약</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>장·절</th><th>핵심 개념</th><th>키워드</th><th>공식</th><th>주류 대응</th></tr></thead>
+    <tbody>
+      <tr><td>11−1</td><td>유통 총량·총액</td><td>유통량, 유통액, 유통수준, 예비유통량</td><td>M = ΣMₓVₓᵀ <span class="badge b-src">원본</span><br>W<sub>t</sub> = ΣΣMC <span class="badge b-src">원본</span></td><td>화물수요예측, 명목집계</td></tr>
+      <tr><td>11−2</td><td>생산–소비 연계</td><td>자재상사, 독립채산제, 도·소매, 수매, 주문제, 지불능력 있는 수요</td><td>—</td><td>SCM, 유효수요, 정부수매</td></tr>
+      <tr><td>11−3</td><td>운수형태 선택</td><td>선행관, 철도 기본, 운수방식, 총비용곡선</td><td>TC = TrC + HC <span class="badge b-der">서술</span></td><td>Baumol–Vinod</td></tr>
+      <tr><td>11−3</td><td>투자 평가</td><td>환산비용, 추가투자 보상기간</td><td>C + Eₙ·K, ΔK/ΔC <span class="badge b-sup">보충</span></td><td>EAC·NPV, 회수기간</td></tr>
+      <tr><td>12 기초</td><td>가치 구성</td><td>사회총생산, 국민소득, 사회순소득</td><td>c + v + m</td><td>총산출 대 GDP</td></tr>
+      <tr><td>12−1</td><td>국가자금전략</td><td>자금관계, 재정적 토대, 자력갱생, 내부축적, 저축</td><td>e = (ΔF/F)/(ΔY/Y) <span class="badge b-der">서술</span></td><td>재정여력, 세수 탄성치</td></tr>
+      <tr><td>12−2</td><td>자금 조성</td><td>순소득, 원가저하, 품종확대, 중앙적립금, 유휴화폐</td><td>Π = Q·m, 적립금 누적식 <span class="badge b-der">서술</span></td><td>이윤, 안정화기금, 양입제출</td></tr>
+      <tr><td>12−3</td><td>자금 이용</td><td>생산적 지출, 수지균형, 절약예비, 축적과 소비</td><td>a = A/Y, C/N↑ <span class="badge b-der">서술</span></td><td>Y = C+I+G, 황금률, 펠드만 모형</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>교재(사회주의 계획경제)</th><th>주류경제학(시장경제)</th></tr></thead>
+    <tbody>
+      <tr><td>조정 메커니즘</td><td>국가계획·주문제</td><td>가격 신호</td></tr>
+      <tr><td>가치 측정</td><td>사회총생산(c+v+m), 순소득</td><td>GDP(부가가치)</td></tr>
+      <tr><td>정부 재원</td><td>국영기업 순소득</td><td>조세</td></tr>
+      <tr><td>재정 원칙</td><td>양입제출, 수입초과(흑자) 추구</td><td>양출제입, 경기대응적 적자 허용</td></tr>
+      <tr><td>외부자금</td><td>배격(자력갱생)</td><td>국채·외국인직접투자를 정상 재원으로 활용</td></tr>
+      <tr><td>투자 대 소비</td><td>축적의 우선적 장성</td><td>황금률 최적 저축, 소비자 주권</td></tr>
+      <tr><td>투자평가</td><td>환산비용·보상기간</td><td>NPV·IRR(복리 할인)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>
+  출처: 『경제전략』 제11장(181~192쪽), 제12장(193~208쪽). 수식 (11−1), (11−2)와 그림 11−1은 원본 페이지 이미지로 대조했습니다. 그래프의 숫자는 모두 설명용 예시 값이며 교재나 실제 통계의 수치가 아닙니다.
+</footer>
+</main>
+</div>
+
+<script>
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  function mk(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function txt(parent, x, y, s, cls, anchor) { const t = mk('text', { x: x, y: y, class: cls || 'tick', 'text-anchor': anchor || 'start' }, parent); t.textContent = s; return t; }
+  function nice(v) { if (v <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); const f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+  const fmt = (v, d) => Number(v).toLocaleString('ko-KR', { maximumFractionDigits: d || 0, minimumFractionDigits: d || 0 });
+  const num = id => { const v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : 0; };
+  function roundTop(x, y, w, h, r) { r = Math.max(0, Math.min(r, h / 2, w / 2)); return `M${x},${y + h}L${x},${y + r}Q${x},${y} ${x + r},${y}L${x + w - r},${y}Q${x + w},${y} ${x + w},${y + r}L${x + w},${y + h}Z`; }
+  function roundBottom(x, y, w, h, r) { r = Math.max(0, Math.min(r, h / 2, w / 2)); return `M${x},${y}L${x + w},${y}L${x + w},${y + h - r}Q${x + w},${y + h} ${x + w - r},${y + h}L${x + r},${y + h}Q${x},${y + h} ${x},${y + h - r}Z`; }
+  const sw = c => `<i class="sw" style="background:var(${c})"></i>`;
+  function row(c, label, val) { return `<div class="r"><span>${c ? sw(c) : ''}${label}</span><span>${val}</span></div>`; }
+
+  function showTip(tip, host, html, x, y) {
+    tip.innerHTML = html; tip.hidden = false;
+    const hw = host.clientWidth, tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = x + 14; if (left + tw > hw) left = x - 14 - tw; if (left < 0) left = Math.max(0, hw - tw);
+    let top = y - th / 2; if (top < 0) top = 0;
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+  }
+  function hideTip(tip) { tip.hidden = true; }
+  function pointerX(svg, e) { const r = svg.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+
+  function setupChart(id, draw) {
+    const root = document.getElementById(id), host = root.querySelector('.plot'), tip = root.querySelector('.tip');
+    let lastW = 0;
+    const render = force => { const w = Math.round(host.clientWidth); if (!w) return; if (!force && w === lastW) return; lastW = w; host.innerHTML = ''; hideTip(tip); draw({ host: host, w: w, tip: tip }); };
+    if ('ResizeObserver' in window) new ResizeObserver(() => render(false)).observe(host);
+    else window.addEventListener('resize', () => render(false));
+    render(true);
+    return () => render(true);
+  }
+  function yAxis(svg, m, w, y, top, step, bottom, fmtFn) {
+    for (let t = bottom; t <= top + 1e-9; t += step) {
+      const v = Math.round(t * 1e6) / 1e6;
+      mk('line', { x1: m.l, x2: w - m.r, y1: y(v), y2: y(v), class: v === 0 ? 'axis' : 'grid' }, svg);
+      txt(svg, m.l - 8, y(v) + 4, fmtFn ? fmtFn(v) : fmt(v), 'tick', 'end');
+    }
+  }
+
+  /* 1. 유통총량 성장 */
+  const S1 = [{ k: 'M₁ 생산물', c: '--s1', b: 'g-ms', g: 'g-gs' }, { k: 'M₂ 원료·자재', c: '--s2', b: 'g-mm', g: 'g-gm' }, { k: 'M₃ 무역', c: '--s3', b: 'g-mt', g: 'g-gt' }];
+  const growth = setupChart('ch-growth', ({ host, w, tip }) => {
+    const T = Math.max(1, Math.min(15, Math.round(num('g-T'))));
+    const ser = S1.map(s => ({ k: s.k, c: s.c, b: Math.max(0, num(s.b)), g: num(s.g) / 100 }));
+    const yrs = Array.from({ length: T + 1 }, (_, i) => i);
+    const data = yrs.map(t => ser.map(s => s.b * Math.pow(1 + s.g, t)));
+    const tot = data.map(r => r.reduce((a, b) => a + b, 0));
+    const h = 300, m = { l: 58, r: 12, t: 24, b: 30 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '연도별 유통총량 누적 막대그래프' }, host);
+    const raw = Math.max(1, ...tot), step = nice(raw / 4), top = Math.ceil(raw / step) * step;
+    const y = v => m.t + ph - (v / top) * ph;
+    yAxis(svg, m, w, y, top, step, 0);
+    const bw = pw / (T + 1), bar = Math.min(bw * 0.62, 46), every = bw < 30 ? 2 : 1;
+    yrs.forEach((t, i) => {
+      const x = m.l + bw * i + (bw - bar) / 2; let cum = 0;
+      data[i].forEach((v, j) => {
+        const y0 = y(cum), y1 = y(cum + v); cum += v;
+        const hh = (y0 - y1) - (j > 0 ? 2 : 0);
+        if (hh <= 0.5) return;
+        if (j === ser.length - 1) mk('path', { d: roundTop(x, y1, bar, hh, 4), style: `fill:var(${ser[j].c})` }, svg);
+        else mk('rect', { x: x, y: y1, width: bar, height: hh, style: `fill:var(${ser[j].c})` }, svg);
+      });
+      if (i % every === 0 || i === T) txt(svg, x + bar / 2, h - m.b + 18, t === 0 ? '기준' : t + '년', 'tick', 'middle');
+      const hit = mk('rect', { x: m.l + bw * i, y: m.t, width: bw, height: ph, class: 'hit' }, svg);
+      const html = `<b>${t === 0 ? '기준연도' : t + '년차'}</b>` + ser.map((s, j) => row(s.c, s.k, fmt(data[i][j]))).join('') + row('', '합계 M', '<strong>' + fmt(tot[i]) + '</strong>');
+      hit.addEventListener('pointermove', e => { const p = pointerX(svg, e); showTip(tip, host, html, p.x, p.y); });
+      hit.addEventListener('pointerleave', () => hideTip(tip));
+    });
+    txt(svg, m.l + bw * T + bw / 2, y(tot[T]) - 7, fmt(tot[T]), 'val', 'middle');
+    txt(svg, m.l, 12, '만t', 'ttl', 'end');
+    document.getElementById('g-out').innerHTML = `${T}년 뒤 유통총량 M = <b>${fmt(tot[T])}만t</b> (기준 대비 ${fmt(tot[T] / tot[0], 2)}배) · M₁ ${fmt(data[T][0])} · M₂ ${fmt(data[T][1])} · M₃ ${fmt(data[T][2])}`;
+    document.getElementById('g-tbody').innerHTML = yrs.map((t, i) => `<tr><td>${t === 0 ? '기준' : t + '년'}</td>${data[i].map(v => `<td class="n">${fmt(v)}</td>`).join('')}<td class="n"><strong>${fmt(tot[i])}</strong></td></tr>`).join('');
+  });
+  ['g-ms', 'g-gs', 'g-mm', 'g-gm', 'g-mt', 'g-gt', 'g-T'].forEach(id => document.getElementById(id).addEventListener('input', growth));
+
+  /* 2. 그림 11-1 */
+  const modes = [{ n: '수상', x: .14 }, { n: '철도', x: .37 }, { n: '도로', x: .53 }, { n: '비행기', x: .79 }];
+  const Tr = x => 0.08 + 0.9 * Math.pow(x, 2.2);
+  const Hc = (x, wt) => wt * (0.15 + 0.75 * Math.exp(-3.2 * x));
+  const fig = setupChart('ch-fig', ({ host, w, tip }) => {
+    const wt = num('fig-w');
+    document.getElementById('fig-w-val').textContent = 'w = ' + wt.toFixed(2) + (Math.abs(wt - 1) < 0.001 ? ' · 원본 그림' : '');
+    const h = 320, m = { l: 34, r: 16, t: 20, b: 46 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const x0 = 0.05, x1 = 0.95, N = 300;
+    const xs = Array.from({ length: N + 1 }, (_, i) => x0 + (x1 - x0) * i / N);
+    const tr = xs.map(Tr), hc = xs.map(x => Hc(x, wt)), tc = xs.map((x, i) => tr[i] + hc[i]);
+    const top = Math.max(...tc) * 1.08;
+    const X = x => m.l + (x - x0) / (x1 - x0) * pw, Y = v => m.t + ph - v / top * ph;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '운수형태별 수송비용, 보관비용, 총비용 곡선' }, host);
+    mk('line', { x1: m.l, x2: m.l, y1: m.t - 6, y2: m.t + ph, class: 'axis' }, svg);
+    mk('line', { x1: m.l, x2: w - m.r, y1: m.t + ph, y2: m.t + ph, class: 'axis' }, svg);
+    txt(svg, m.l - 6, m.t - 8, '비용', 'ttl', 'start');
+    modes.forEach(md => { mk('line', { x1: X(md.x), x2: X(md.x), y1: m.t + ph, y2: m.t + ph + 5, class: 'axis' }, svg); txt(svg, X(md.x), m.t + ph + 20, md.n, 'lbl', 'middle'); });
+    txt(svg, w - m.r, h - 6, '운수형태 (빠른 순서 →)', 'ttl', 'end');
+    const path = arr => arr.map((v, i) => (i ? 'L' : 'M') + X(xs[i]).toFixed(1) + ',' + Y(v).toFixed(1)).join('');
+    mk('path', { d: path(hc), style: 'fill:none;stroke:var(--s3);stroke-width:2' }, svg);
+    mk('path', { d: path(tr), style: 'fill:none;stroke:var(--s2);stroke-width:2' }, svg);
+    mk('path', { d: path(tc), style: 'fill:none;stroke:var(--s1);stroke-width:2.5' }, svg);
+    let mi = 0; tc.forEach((v, i) => { if (v < tc[mi]) mi = i; });
+    let ci = -1; for (let i = 1; i <= N; i++) { if ((tr[i - 1] - hc[i - 1]) * (tr[i] - hc[i]) <= 0) { ci = i; break; } }
+    const xm = xs[mi];
+    mk('line', { x1: X(xm), x2: X(xm), y1: Y(tc[mi]), y2: m.t + ph, style: 'stroke:var(--s1);stroke-width:1;stroke-dasharray:3 3' }, svg);
+    mk('circle', { cx: X(xm), cy: Y(tc[mi]), r: 5, style: 'fill:var(--s1);stroke:var(--surface);stroke-width:2' }, svg);
+    txt(svg, X(xm), Y(tc[mi]) - 12, '최저 총비용', 'val', 'middle');
+    if (ci > 0) { mk('circle', { cx: X(xs[ci]), cy: Y(tr[ci]), r: 4.5, style: 'fill:var(--surface);stroke:var(--ink2);stroke-width:1.5' }, svg); txt(svg, X(xs[ci]) + 8, Y(tr[ci]) + 16, '교차', 'lbl', 'start'); }
+    txt(svg, X(x0) + 6, Y(tc[0]) - 8, '총비용', 'lbl', 'start');
+    txt(svg, X(x1) - 2, Y(tr[N]) + 18, '수송비용', 'lbl', 'end');
+    txt(svg, X(x1) - 2, Y(hc[N]) - 8, '보관비용', 'lbl', 'end');
+    // hover
+    const cross = mk('line', { x1: 0, x2: 0, y1: m.t, y2: m.t + ph, style: 'stroke:var(--muted);stroke-width:1', visibility: 'hidden' }, svg);
+    const dots = ['--s1', '--s2', '--s3'].map(c => mk('circle', { r: 4, style: `fill:var(${c});stroke:var(--surface);stroke-width:2`, visibility: 'hidden' }, svg));
+    const hit = mk('rect', { x: m.l, y: m.t, width: pw, height: ph, class: 'hit' }, svg);
+    hit.addEventListener('pointermove', e => {
+      const p = pointerX(svg, e); const i = Math.max(0, Math.min(N, Math.round((p.x - m.l) / pw * N)));
+      const cx = X(xs[i]); cross.setAttribute('x1', cx); cross.setAttribute('x2', cx); cross.setAttribute('visibility', 'visible');
+      [tc[i], tr[i], hc[i]].forEach((v, k) => { dots[k].setAttribute('cx', cx); dots[k].setAttribute('cy', Y(v)); dots[k].setAttribute('visibility', 'visible'); });
+      const near = modes.reduce((a, b) => Math.abs(b.x - xs[i]) < Math.abs(a.x - xs[i]) ? b : a);
+      showTip(tip, host, `<b>가까운 운수형태: ${near.n}</b>` + row('--s1', '총비용', fmt(tc[i] * 100)) + row('--s2', '수송비용', fmt(tr[i] * 100)) + row('--s3', '보관비용', fmt(hc[i] * 100)) + '<div class="muted" style="font-size:11.5px">상대 비용 단위</div>', p.x, p.y);
+    });
+    hit.addEventListener('pointerleave', () => { hideTip(tip); cross.setAttribute('visibility', 'hidden'); dots.forEach(d => d.setAttribute('visibility', 'hidden')); });
+    let where;
+    if (xm < modes[0].x) where = '수상보다 느린 쪽';
+    else if (xm > modes[3].x) where = '비행기 쪽';
+    else { for (let k = 0; k < 3; k++) if (xm >= modes[k].x && xm <= modes[k + 1].x) where = `${modes[k].n}와 ${modes[k + 1].n} 사이`; }
+    const near = modes.reduce((a, b) => Math.abs(b.x - xm) < Math.abs(a.x - xm) ? b : a);
+    document.getElementById('fig-out').innerHTML = `총비용 최저점: <b>${where}</b> · 가장 가까운 운수형태: <b>${near.n}</b>`;
+  });
+  document.getElementById('fig-w').addEventListener('input', fig);
+
+  /* 3. 보상기간 */
+  const pay = setupChart('ch-pay', ({ host, w, tip }) => {
+    const K1 = num('pb-k1'), C1 = num('pb-c1'), K2 = num('pb-k2'), C2 = num('pb-c2'), En = Math.max(0.01, num('pb-en'));
+    const Tn = 1 / En; const T = (C1 > C2 && K2 > K1) ? (K2 - K1) / (C1 - C2) : null;
+    const H = Math.min(25, Math.max(10, Math.ceil(Math.max(T || 0, Tn)) + 3));
+    const yrs = Array.from({ length: H + 1 }, (_, i) => i);
+    const a = yrs.map(t => K1 + C1 * t), b = yrs.map(t => K2 + C2 * t);
+    const h = 300, m = { l: 52, r: 16, t: 22, b: 34 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const raw = Math.max(1, ...a, ...b), step = nice(raw / 4), top = Math.ceil(raw / step) * step;
+    const X = t => m.l + t / H * pw, Y = v => m.t + ph - v / top * ph;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '두 방안의 누적 비용 비교' }, host);
+    yAxis(svg, m, w, Y, top, step, 0);
+    const xStep = H > 16 ? 4 : 2;
+    for (let t = 0; t <= H; t += xStep) txt(svg, X(t), h - m.b + 18, t + '년', 'tick', 'middle');
+    txt(svg, m.l, 12, '억원', 'ttl', 'end');
+    if (Tn <= H) { mk('line', { x1: X(Tn), x2: X(Tn), y1: m.t, y2: m.t + ph, style: 'stroke:var(--muted);stroke-width:1;stroke-dasharray:4 4' }, svg); txt(svg, X(Tn) + 4, m.t + 10, '표준 보상기간 1/Eₙ', 'lbl', 'start'); }
+    const line = (arr, c) => mk('path', { d: arr.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join(''), style: `fill:none;stroke:var(${c});stroke-width:2` }, svg);
+    line(a, '--s1'); line(b, '--s2');
+    txt(svg, X(H) - 2, Y(a[H]) + (a[H] >= b[H] ? -8 : 16), '방안 1', 'lbl', 'end');
+    txt(svg, X(H) - 2, Y(b[H]) + (b[H] > a[H] ? -8 : 16), '방안 2', 'lbl', 'end');
+    if (T !== null && T <= H) { const v = K1 + C1 * T; mk('circle', { cx: X(T), cy: Y(v), r: 5, style: 'fill:var(--ink);stroke:var(--surface);stroke-width:2' }, svg); txt(svg, X(T), Y(v) - 12, `T = ${fmt(T, 1)}년`, 'val', 'middle'); }
+    const cross = mk('line', { y1: m.t, y2: m.t + ph, style: 'stroke:var(--muted);stroke-width:1', visibility: 'hidden' }, svg);
+    const hit = mk('rect', { x: m.l, y: m.t, width: pw, height: ph, class: 'hit' }, svg);
+    hit.addEventListener('pointermove', e => { const p = pointerX(svg, e); const t = Math.max(0, Math.min(H, Math.round((p.x - m.l) / pw * H))); cross.setAttribute('x1', X(t)); cross.setAttribute('x2', X(t)); cross.setAttribute('visibility', 'visible'); showTip(tip, host, `<b>${t}년 시점 누적 비용</b>` + row('--s1', '방안 1', fmt(a[t])) + row('--s2', '방안 2', fmt(b[t])) + row('', '차이(1 − 2)', fmt(a[t] - b[t])), p.x, p.y); });
+    hit.addEventListener('pointerleave', () => { hideTip(tip); cross.setAttribute('visibility', 'hidden'); });
+    const Z1 = C1 + En * K1, Z2 = C2 + En * K2;
+    let msg = `환산비용 Z₁ = ${fmt(C1)} + ${En} × ${fmt(K1)} = <b>${fmt(Z1, 1)}</b> · Z₂ = ${fmt(C2)} + ${En} × ${fmt(K2)} = <b>${fmt(Z2, 1)}</b> → 환산비용 기준 <b>방안 ${Z2 < Z1 ? 2 : 1}</b><br>`;
+    if (T === null) msg += '방안 2가 투자는 많은데 운영비를 줄이지 못하거나 투자가 더 적어서, 추가투자 보상기간을 계산할 수 없습니다.';
+    else msg += `보상기간 T = (${fmt(K2)} − ${fmt(K1)}) ÷ (${fmt(C1)} − ${fmt(C2)}) = <b>${fmt(T, 1)}년</b> · 표준 ${fmt(Tn, 1)}년 → <b>${T <= Tn ? '방안 2 채택' : '방안 1 유지'}</b>`;
+    document.getElementById('pb-out').innerHTML = msg;
+  });
+  ['pb-k1', 'pb-c1', 'pb-k2', 'pb-c2', 'pb-en'].forEach(id => document.getElementById(id).addEventListener('input', pay));
+
+  /* 4. 가치 구성 */
+  setupChart('ch-value', ({ host, w, tip }) => {
+    const rows = [{ n: '기준년', c: 60, v: 25, m: 15 }, { n: '비교년', c: 78, v: 24, m: 14 }];
+    const maxT = 120, m = { l: 4, r: 8 }, pw = w - m.l - m.r, X = v => m.l + v / maxT * pw;
+    const rowH = 112, h = rowH * rows.length + 6;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '두 해의 c, v, m 구성 비교' }, host);
+    const segs = [{ k: 'c', n: 'c 소비된 생산수단', col: '--seg-c' }, { k: 'v', n: 'v 노동자 몫', col: '--s1' }, { k: 'm', n: 'm 사회순소득', col: '--s2' }];
+    rows.forEach((r, i) => {
+      const y0 = i * rowH + 18, total = r.c + r.v + r.m;
+      txt(svg, m.l, y0 - 4, `${r.n} · 사회총생산 ${total}`, 'val', 'start');
+      let cum = 0;
+      segs.forEach((s, j) => {
+        const val = r[s.k], x = X(cum) + (j ? 1 : 0), wd = X(cum + val) - X(cum) - (j ? 1 : 0) - (j < 2 ? 1 : 0);
+        const el = mk('rect', { x: x, y: y0 + 4, width: Math.max(0, wd), height: 28, rx: 3, style: `fill:var(${s.col});fill-opacity:.5;stroke:var(${s.col});stroke-width:1.2` }, svg);
+        if (wd > 34) txt(svg, x + wd / 2, y0 + 22, `${s.k} ${val}`, 'val', 'middle');
+        el.addEventListener('pointermove', e => { const p = pointerX(svg, e); showTip(tip, host, `<b>${r.n}</b>` + row(s.col, s.n, val) + row('', '사회총생산 대비', fmt(val / total * 100, 1) + '%'), p.x, p.y); });
+        el.addEventListener('pointerleave', () => hideTip(tip));
+        cum += val;
+      });
+      const br = (a, b, yy, label) => { const xa = X(a), xb = X(b); mk('path', { d: `M${xa},${yy - 5}L${xa},${yy}L${xb},${yy}L${xb},${yy - 5}`, style: 'fill:none;stroke:var(--ink2);stroke-width:1' }, svg); txt(svg, xb, yy + 14, label, 'lbl', 'end'); };
+      br(r.c, total, y0 + 44, `국민소득 v+m = ${r.v + r.m}`);
+      br(r.c + r.v, total, y0 + 76, `순소득 m = ${r.m}`);
+    });
+  });
+
+  /* 5. 순소득 넓이 분해 */
+  const area = setupChart('ch-area', ({ host, w, tip }) => {
+    const Q = 100, M = 20, dqp = num('ar-dq'), dmp = num('ar-dm');
+    document.getElementById('ar-dq-val').textContent = dqp + '%'; document.getElementById('ar-dm-val').textContent = dmp + '%';
+    const dQ = Q * dqp / 100, dM = M * dmp / 100;
+    const h = 280, m = { l: 34, r: 12, t: 12, b: 36 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const sx = pw / (Q * 1.6), sy = ph / (M * 1.6);
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '순소득 증가분 넓이 분해' }, host);
+    const base = m.t + ph, x0 = m.l;
+    const parts = [
+      { n: '기존 Q·m', col: '--seg-c', x: 0, y: 0, w: Q, h: M },
+      { n: '양적 성장 m·ΔQ', col: '--s1', x: Q, y: 0, w: dQ, h: M },
+      { n: '원가저하·질 Q·Δm', col: '--s2', x: 0, y: M, w: Q, h: dM },
+      { n: '교차 ΔQ·Δm', col: '--s3', x: Q, y: M, w: dQ, h: dM }
+    ];
+    parts.forEach(p => {
+      if (p.w <= 0 || p.h <= 0) return;
+      const rx = x0 + p.x * sx + 1, ry = base - (p.y + p.h) * sy + 1, rw = p.w * sx - 2, rh = p.h * sy - 2;
+      if (rw <= 0 || rh <= 0) return;
+      const el = mk('rect', { x: rx, y: ry, width: rw, height: rh, rx: 2, style: `fill:var(${p.col});fill-opacity:.45;stroke:var(${p.col});stroke-width:1.2` }, svg);
+      const val = p.w * p.h;
+      if (rw > 70 && rh > 22) txt(svg, rx + rw / 2, ry + rh / 2 + 4, fmt(val), 'val', 'middle');
+      el.addEventListener('pointermove', e => { const q = pointerX(svg, e); showTip(tip, host, `<b>${p.n}</b>` + row(p.col, '순소득', fmt(val)), q.x, q.y); });
+      el.addEventListener('pointerleave', () => hideTip(tip));
+    });
+    mk('line', { x1: x0, x2: x0 + (Q + dQ) * sx, y1: base, y2: base, class: 'axis' }, svg);
+    mk('line', { x1: x0, x2: x0, y1: base, y2: base - (M + dM) * sy, class: 'axis' }, svg);
+    txt(svg, x0 + Q * sx / 2, base + 18, 'Q = 100', 'lbl', 'middle');
+    if (dQ * sx > 34) txt(svg, x0 + (Q + dQ / 2) * sx, base + 18, 'ΔQ = ' + fmt(dQ), 'lbl', 'middle');
+    txt(svg, x0 - 6, base - M * sy / 2 + 4, 'm', 'lbl', 'end');
+    if (dM * sy > 14) txt(svg, x0 - 6, base - (M + dM / 2) * sy + 4, 'Δm', 'lbl', 'end');
+    const P0 = Q * M, a1 = M * dQ, a2 = Q * dM, a3 = dQ * dM, d = a1 + a2 + a3;
+    const pct = v => d > 0 ? ' (' + fmt(v / d * 100, 0) + '%)' : '';
+    document.getElementById('ar-out').innerHTML = `Π: ${fmt(P0)} → <b>${fmt(P0 + d)}</b> (ΔΠ = ${fmt(d)}) · 양적 성장 ${fmt(a1)}${pct(a1)} · 원가저하·질 ${fmt(a2)}${pct(a2)} · 교차 ${fmt(a3)}${pct(a3)}`;
+  });
+  ['ar-dq', 'ar-dm'].forEach(id => document.getElementById(id).addEventListener('input', area));
+
+  /* 6. 중앙적립금 */
+  const surplus = [12, 8, -5, 15, 10, 14], R0 = 20;
+  const cumR = []; surplus.reduce((acc, s, i) => (cumR[i] = acc + s), R0);
+  document.getElementById('res-tbody').innerHTML = `<tr><td>기초</td><td class="n">—</td><td class="n">${R0}</td></tr>` + surplus.map((s, i) => `<tr><td>${i + 1}년</td><td class="n">${s}</td><td class="n">${cumR[i]}</td></tr>`).join('');
+  setupChart('ch-res', ({ host, w, tip }) => {
+    const h = 290, m = { l: 44, r: 16, t: 22, b: 30 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const vmin = Math.min(0, ...surplus), vmax = Math.max(...cumR, ...surplus);
+    const step = nice((vmax - vmin) / 5), lo = Math.floor(vmin / step) * step, hi = Math.ceil(vmax / step) * step;
+    const Y = v => m.t + ph - (v - lo) / (hi - lo) * ph;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '연간 수지 막대와 누적 적립금 선' }, host);
+    yAxis(svg, m, w, Y, hi, step, lo);
+    txt(svg, m.l, 12, '억원', 'ttl', 'end');
+    const n = surplus.length, bw = pw / n, bar = Math.min(bw * 0.5, 38), cx = i => m.l + bw * i + bw / 2;
+    surplus.forEach((s, i) => {
+      const x = cx(i) - bar / 2, y0 = Y(0), y1 = Y(s);
+      if (s >= 0) mk('path', { d: roundTop(x, y1, bar, y0 - y1, 4), style: 'fill:var(--s1)' }, svg);
+      else mk('path', { d: roundBottom(x, y0, bar, y1 - y0, 4), style: 'fill:var(--s1);fill-opacity:.55' }, svg);
+      txt(svg, cx(i), h - m.b + 18, (i + 1) + '년', 'tick', 'middle');
+    });
+    mk('path', { d: cumR.map((v, i) => (i ? 'L' : 'M') + cx(i) + ',' + Y(v)).join(''), style: 'fill:none;stroke:var(--s2);stroke-width:2' }, svg);
+    cumR.forEach((v, i) => mk('circle', { cx: cx(i), cy: Y(v), r: 4, style: 'fill:var(--s2);stroke:var(--surface);stroke-width:2' }, svg));
+    txt(svg, cx(n - 1), Y(cumR[n - 1]) - 10, fmt(cumR[n - 1]), 'val', 'middle');
+    txt(svg, cx(2) + bar / 2 + 4, Y(surplus[2]) + 4, '적자', 'lbl', 'start');
+    surplus.forEach((s, i) => {
+      const hit = mk('rect', { x: m.l + bw * i, y: m.t, width: bw, height: ph, class: 'hit' }, svg);
+      hit.addEventListener('pointermove', e => { const p = pointerX(svg, e); showTip(tip, host, `<b>${i + 1}년</b>` + row('--s1', '수입 − 지출', fmt(s)) + row('--s2', '누적 적립금', fmt(cumR[i])), p.x, p.y); });
+      hit.addEventListener('pointerleave', () => hideTip(tip));
+    });
+  });
+
+  /* 7. 황금률 */
+  const gold = setupChart('ch-gold', ({ host, w, tip }) => {
+    const al = num('gd-a'); document.getElementById('gd-a-val').textContent = al.toFixed(2);
+    const nd = 0.07, c = s => (1 - s) * Math.pow(s / nd, al / (1 - al));
+    const s0 = 0.02, s1 = 0.95, N = 200, ss = Array.from({ length: N + 1 }, (_, i) => s0 + (s1 - s0) * i / N), cs = ss.map(c);
+    const h = 290, m = { l: 44, r: 16, t: 22, b: 40 }, pw = w - m.l - m.r, ph = h - m.t - m.b;
+    const raw = Math.max(...cs), step = nice(raw / 4), top = Math.ceil(raw / step) * step;
+    const X = s => m.l + s * pw, Y = v => m.t + ph - v / top * ph;
+    const svg = mk('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, role: 'img', 'aria-label': '저축률에 따른 정상상태 1인당 소비' }, host);
+    mk('rect', { x: X(al), y: m.t, width: X(1) - X(al), height: ph, style: 'fill:var(--fix);fill-opacity:.07' }, svg);
+    yAxis(svg, m, w, Y, top, step, 0, v => fmt(v, step < 1 ? 1 : 0));
+    for (let s = 0; s <= 1.0001; s += 0.2) txt(svg, X(s), h - m.b + 18, Math.round(s * 100) + '%', 'tick', 'middle');
+    txt(svg, w - m.r, h - 4, '저축률 s (교재의 축적률)', 'ttl', 'end');
+    txt(svg, m.l, 12, 'c*', 'ttl', 'end');
+    txt(svg, X(1) - 6, m.t + 14, '과잉축적 구간', 'lbl', 'end');
+    mk('path', { d: cs.map((v, i) => (i ? 'L' : 'M') + X(ss[i]).toFixed(1) + ',' + Y(v).toFixed(1)).join(''), style: 'fill:none;stroke:var(--s1);stroke-width:2' }, svg);
+    const cg = c(al);
+    mk('line', { x1: X(al), x2: X(al), y1: Y(cg), y2: m.t + ph, style: 'stroke:var(--s1);stroke-width:1;stroke-dasharray:3 3' }, svg);
+    mk('circle', { cx: X(al), cy: Y(cg), r: 5, style: 'fill:var(--s1);stroke:var(--surface);stroke-width:2' }, svg);
+    txt(svg, X(al), Y(cg) - 12, `황금률 s = α = ${Math.round(al * 100)}%`, 'val', 'middle');
+    const cross = mk('line', { y1: m.t, y2: m.t + ph, style: 'stroke:var(--muted);stroke-width:1', visibility: 'hidden' }, svg);
+    const dot = mk('circle', { r: 4, style: 'fill:var(--s1);stroke:var(--surface);stroke-width:2', visibility: 'hidden' }, svg);
+    const hit = mk('rect', { x: X(s0), y: m.t, width: X(s1) - X(s0), height: ph, class: 'hit' }, svg);
+    hit.addEventListener('pointermove', e => { const p = pointerX(svg, e); const i = Math.max(0, Math.min(N, Math.round((p.x - X(s0)) / (X(s1) - X(s0)) * N))); const x = X(ss[i]); cross.setAttribute('x1', x); cross.setAttribute('x2', x); cross.setAttribute('visibility', 'visible'); dot.setAttribute('cx', x); dot.setAttribute('cy', Y(cs[i])); dot.setAttribute('visibility', 'visible'); showTip(tip, host, `<b>저축률 ${fmt(ss[i] * 100, 0)}%</b>` + row('--s1', '1인당 소비 c*', fmt(cs[i], 2)) + row('', '황금률 대비', fmt(cs[i] / cg * 100, 0) + '%'), p.x, p.y); });
+    hit.addEventListener('pointerleave', () => { hideTip(tip); cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); });
+  });
+  document.getElementById('gd-a').addEventListener('input', gold);
+})();
+</script>
+
+</body></html>
